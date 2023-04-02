@@ -1,0 +1,21 @@
+<h2> GameUser List</h2>
+<table class="table table-striped">
+    <thead>
+        <th> First Name</th>
+        <th> Last Name</th>
+        <th> Email Address</th>
+        <th> Active Status</th>
+        <th> Username</th>
+        <th> Password</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let gameuser of gameusers">
+            <td>{{gameuser.firstName}}</td>
+            <td>{{gameuser.lastName}}</td>
+            <td>{{gameuser.emailAddress}}</td>
+            <td>{{gameuser.activeStatus}}</td>
+            <td>{{gameuser.username}}</td>
+            <td>{{gameuser.password}}</td>
+        </tr>    
+    </tbody>
+</table>

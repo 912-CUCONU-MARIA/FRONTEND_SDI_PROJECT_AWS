@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+   <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="gameusers" routerLinkActive="active" class="nav-link"> GameUser List</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="create-gameuser" routerLinkActive="active" class="nav-link"> Add GameUser</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="gameuser-average-playercharacter-level" routerLinkActive="active" class="nav-link"> Gameuser Avg PlayerCh Lvl</a>
+      </li>
+   </ul>
+</nav>
+
+<!-- <h3>World of Warcraft Frontend</h3> -->
+<ng-container *ngIf="router.url === '/'">
+  <h1>Welcome to my World of Warcraft Angular Application</h1>
+  <p>Please navigate to one of the available routes to continue</p>
+</ng-container>
+
+
+<h1 class="text-center"> {{title}}</h1>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span>All rights Reserved 2023 @Mara</span>
+  </div>
+</footer>
