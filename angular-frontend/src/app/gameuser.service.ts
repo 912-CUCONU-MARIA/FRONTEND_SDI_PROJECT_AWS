@@ -9,7 +9,7 @@ import {Gameuseraverageplayercharacterleveldto} from './gameuseraverageplayercha
 export class GameuserService {
 
   //change this for cloud ip
-  private baseURL="http://13.48.128.12:80/gameusers"
+  private baseURL="https://13.48.128.12:80/gameusers"
   constructor(private httpClient:HttpClient) { }
 
   getGameusersList():Observable<Gameuser[]>{
