@@ -2,7 +2,7 @@
   "engines" : { 
     "npm" : ">=9.5.0 <=9.5.0",
     "node" : ">=18.15.0 <=18.15.0"
-  }
+  },
   "name": "angular-frontend",
   "version": "0.0.0",
   "scripts": {
