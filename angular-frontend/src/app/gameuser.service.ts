@@ -11,8 +11,8 @@ export class GameuserService {
   //change this for cloud ip
   //private baseURL="http://localhost:80/gameusers"
   //  baseUrl = 'http://ec2-16-170-133-85.eu-north-1.compute.amazonaws.com/api';
-  private baseURL = 'http://ec2-13-48-3-156.eu-north-1.compute.amazonaws.com/api';
-  //private baseURL="http://13.48.3.156:80/gameusers"
+  //private baseURL = 'http://ec2-13-48-3-156.eu-north-1.compute.amazonaws.com/api';
+  private baseURL="/api";
   constructor(private httpClient:HttpClient) { }
 
   getGameusersList():Observable<Gameuser[]>{
