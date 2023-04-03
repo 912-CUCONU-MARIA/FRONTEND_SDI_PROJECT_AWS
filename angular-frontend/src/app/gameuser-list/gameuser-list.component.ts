@@ -41,7 +41,7 @@ export class GameuserListComponent implements OnInit{
     this.router.navigate(['gameuser-details',id]);
   }
 
-  sort(isAsc:boolean){
+  mySort(isAsc:boolean){
     if(isAsc){
       this.gameusers.sort((a,b)=>(a.firstName>b.firstName) ? 1: ((b.firstName>a.firstName) ? -1 : 0));
     } else{
