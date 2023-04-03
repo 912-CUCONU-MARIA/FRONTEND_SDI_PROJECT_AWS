@@ -37,6 +37,12 @@ export class GameuserListComponent implements OnInit{
     })
   }
 
+  confirmDelete(id: number) {
+    if (confirm("Are you sure you want to delete this game user?")) {
+      this.deleteGameuser(id);
+    }
+  }
+
   gameuserDetails(id:number){
     this.router.navigate(['gameuser-details',id]);
   }
