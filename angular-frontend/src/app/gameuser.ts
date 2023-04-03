@@ -1,5 +1,5 @@
 export class Gameuser {
-    id?: number;
+    id!: number;
     firstName?: string;
     lastName?:string;
     emailAddress?:string;

@@ -7,6 +7,7 @@
         <th> Active Status</th>
         <th> Username</th>
         <th> Password</th>
+        <th> Actions </th>
     </thead>
     <tbody>
         <tr *ngFor="let gameuser of gameusers">
@@ -16,6 +17,12 @@
             <td>{{gameuser.activeStatus}}</td>
             <td>{{gameuser.username}}</td>
             <td>{{gameuser.password}}</td>
+            <td>
+                <button (click)="updateGameuser(gameuser.id)" class="btn btn-info" > Update</button>
+                <button (click)="deleteGameuser(gameuser.id)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click)="gameuserDetails(gameuser.id)" class="btn btn-info" style="margin-left: 10px"> Details</button>
+
+            </td>
         </tr>    
     </tbody>
 </table>

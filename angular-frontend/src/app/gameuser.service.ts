@@ -25,4 +25,16 @@ export class GameuserService {
     return this.httpClient.get<Gameuseraverageplayercharacterleveldto[]>(`${this.baseURL}/averageplayercharacterlevel`);
   }
 
+  getGameuserById(id:number): Observable<Gameuser>{
+    return this.httpClient.get<Gameuser>(`${this.baseURL}/${id}`);
+  }
+
+  updateGameuser(id:number, gameuser:Gameuser):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`,gameuser);
+  }
+
+  deleteGameuser(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+
 }
