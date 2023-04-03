@@ -23,7 +23,12 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              "src/_redirects",
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -91,6 +96,14 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/angular-frontend",
+            "netlifyToken": "4APaZD8KNdOpNFIvp73QZMZnjWG5NyM9mUx9Bbv8VwA",
+            "siteId": ""
           }
         }
       }
