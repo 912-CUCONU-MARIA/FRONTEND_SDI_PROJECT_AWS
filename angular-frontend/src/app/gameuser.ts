@@ -1,6 +1,6 @@
 export class Gameuser {
     id!: number;
-    firstName?: string;
+    firstName!: string;
     lastName?:string;
     emailAddress?:string;
     activeStatus?:boolean;

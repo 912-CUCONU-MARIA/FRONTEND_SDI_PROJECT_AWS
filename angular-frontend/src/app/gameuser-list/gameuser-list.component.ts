@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class GameuserListComponent implements OnInit{
 
-  gameusers?: Gameuser[]; 
+  gameusers!: Gameuser[]; 
 
   constructor(private gameuserService:GameuserService
     ,private router: Router){}
@@ -39,6 +39,15 @@ export class GameuserListComponent implements OnInit{
 
   gameuserDetails(id:number){
     this.router.navigate(['gameuser-details',id]);
+  }
+
+  sort(isAsc:boolean){
+    if(isAsc){
+      this.gameusers.sort((a,b)=>(a.firstName>b.firstName) ? 1: ((b.firstName>a.firstName) ? -1 : 0));
+    } else{
+      this.gameusers.sort((a,b)=>(a.firstName>b.firstName) ? -1: ((b.firstName>a.firstName) ? 1 : 0));
+    }
+
   }
 
 }
