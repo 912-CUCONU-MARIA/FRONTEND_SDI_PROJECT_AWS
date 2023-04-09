@@ -16,7 +16,9 @@ export class GameuserListComponent implements OnInit{
   totalElements: number = 0;
   currentPage: number = 0;
   pageSize: number = 10;
-
+  sortColumn: string | null = null;
+  sortDirection: string | null = null;
+  
 
   constructor(private gameuserService:GameuserService
     ,private router: Router){}
@@ -34,13 +36,25 @@ export class GameuserListComponent implements OnInit{
   // }
 
   //for pagination
+  // private getGameusers() {
+  //   this.gameuserService.getGameusersList(this.currentPage, this.pageSize).subscribe(data => {
+  //     this.gameusers = data.content;
+  //     this.totalElements = data.totalElements;
+  //     this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
+  //   });
+  // }
+
+  //for pagination2
   private getGameusers() {
-    this.gameuserService.getGameusersList(this.currentPage, this.pageSize).subscribe(data => {
-      this.gameusers = data.content;
-      this.totalElements = data.totalElements;
-      this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
-    });
+    this.gameuserService
+      .getGameusersList(this.currentPage, this.pageSize, this.sortColumn ?? undefined, this.sortDirection ?? undefined)
+      .subscribe((data) => {
+        this.gameusers = data.content;
+        this.totalPages = data.totalPages;
+      });
   }
+  
+
   setPage(page: number) {
     this.currentPage = page;
     this.getGameusers();
@@ -76,16 +90,23 @@ export class GameuserListComponent implements OnInit{
   //   }
 
   // }
-  mySort(isAsc: boolean) {
-    const direction = isAsc ? 'asc' : 'desc';
-    const sort = 'firstName';
+  // mySort(isAsc: boolean) {
+  //   const direction = isAsc ? 'asc' : 'desc';
+  //   const sort = 'firstName';
   
-    this.gameuserService.getGameusersList(this.currentPage, this.pageSize, sort, direction).subscribe(data => {
-      this.gameusers = data.content;
-      this.totalElements = data.totalElements;
-      this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
-    });
-  }
+  //   this.gameuserService.getGameusersList(this.currentPage, this.pageSize, sort, direction).subscribe(data => {
+  //     this.gameusers = data.content;
+  //     this.totalElements = data.totalElements;
+  //     this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
+  //   });
+  // }
+    mySort(isAsc: boolean) {
+      const direction = isAsc ? 'asc' : 'desc';
+      this.currentPage = 0;
+      this.sortColumn = 'firstName';
+      this.sortDirection = direction;
+      this.getGameusers();
+    }
   
 
 }

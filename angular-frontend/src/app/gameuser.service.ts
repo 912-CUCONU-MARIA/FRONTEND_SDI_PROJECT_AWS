@@ -26,17 +26,36 @@ export class GameuserService {
   //     .set('size', size.toString());
   //   return this.httpClient.get<any>(`${this.baseURL}/gameusers`, { params: params });
   // }
-  getGameusersList(page: number, size: number, sort?: string, direction?: string): Observable<any> {
-    let params = new HttpParams()
-      .set('page', page.toString())
-      .set('size', size.toString());
+//   getGameusersList(page: number, size: number, sort?: string, direction?: string): Observable<any> {
+//     let params = new HttpParams()
+//       .set('page', page.toString())
+//       .set('size', size.toString());
 
-    if (sort && direction) {
-        params = params.set('sort', sort).set('direction', direction);
-    }
+//     if (sort && direction) {
+//         params = params.set('sort', sort).set('direction', direction);
+//     }
 
-    return this.httpClient.get<any>(`${this.baseURL}/gameusers`, { params: params });
-}
+//     return this.httpClient.get<any>(`${this.baseURL}/gameusers`, { params: params });
+// }
+      getGameusersList(
+        page: number,
+        size: number,
+        sort: string | undefined = undefined,
+        direction: string | undefined = undefined
+      ): Observable<any> {
+        let params = new HttpParams()
+          .set("page", page.toString())
+          .set("size", size.toString());
+
+        if (sort && direction) {
+          params = params.set("sort", sort).set("direction", direction);
+        }
+
+        return this.httpClient.get<any>(`${this.baseURL}/gameusers`, {
+          params: params,
+        });
+      }
+
 
 
   createGameuser(gameuser:Gameuser):Observable<Object>{
