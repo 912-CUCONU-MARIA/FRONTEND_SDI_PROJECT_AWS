@@ -11,6 +11,13 @@ export class GameuserListComponent implements OnInit{
 
   gameusers!: Gameuser[]; 
 
+  //for pagination
+  totalPages: number[] = [];
+  totalElements: number = 0;
+  currentPage: number = 0;
+  pageSize: number = 10;
+
+
   constructor(private gameuserService:GameuserService
     ,private router: Router){}
 
@@ -18,13 +25,27 @@ export class GameuserListComponent implements OnInit{
    this.getGameusers();
   }
 
-  private getGameusers(){
-    this.gameuserService.getGameusersList().subscribe(data=>
-      {
-        this.gameusers=data;
-      }
-      );
+  // private getGameusers(){
+  //   this.gameuserService.getGameusersList().subscribe(data=>
+  //     {
+  //       this.gameusers=data;
+  //     }
+  //     );
+  // }
+
+  //for pagination
+  private getGameusers() {
+    this.gameuserService.getGameusersList(this.currentPage, this.pageSize).subscribe(data => {
+      this.gameusers = data.content;
+      this.totalElements = data.totalElements;
+      this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
+    });
   }
+  setPage(page: number) {
+    this.currentPage = page;
+    this.getGameusers();
+  }
+
 
   updateGameuser(id: number){
     this.router.navigate(['update-gameuser',id]);

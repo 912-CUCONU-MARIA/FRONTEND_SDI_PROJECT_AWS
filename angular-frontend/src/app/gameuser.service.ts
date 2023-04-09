@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import { Gameuser } from './gameuser';
@@ -16,8 +16,15 @@ export class GameuserService {
   private baseURL="/api"
   constructor(private httpClient:HttpClient) { }
 
-  getGameusersList():Observable<Gameuser[]>{
-      return this.httpClient.get<Gameuser[]>(`${this.baseURL}/gameusers`);
+  // getGameusersList():Observable<Gameuser[]>{
+  //       return this.httpClient.get<Gameuser[]>(`${this.baseURL}/gameusers`);
+  //   }
+
+  getGameusersList(page: number, size: number): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+    return this.httpClient.get<any>(`${this.baseURL}/gameusers`, { params: params });
   }
 
   createGameuser(gameuser:Gameuser):Observable<Object>{

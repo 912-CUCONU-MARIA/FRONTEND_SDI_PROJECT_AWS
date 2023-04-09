@@ -1,6 +1,40 @@
 <h2> GameUser List</h2>
-<button (click)="mySort(true)">ASC</button>
-<button (click)="mySort(false)">DESC</button>
+
+<!-- Custom Paginator -->
+<div class="paginator">
+    <button *ngFor="let page of totalPages" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+  </div>
+  
+  <!-- Paginator CSS styles -->
+  <style>
+    .paginator {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .paginator button {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      color: black;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 4px;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+    .paginator button:hover:not(.active) {
+      background-color: #ddd;
+    }
+    .paginator button.active {
+      background-color: #2196F3;
+      color: white;
+    }
+  </style>
+  
+
+<button (click)="mySort(true)">ASC by FirstName</button>
+<button (click)="mySort(false)">DESC by FirstName</button>
 <table class="table table-striped">
     <thead>
         <th> First Name</th>
