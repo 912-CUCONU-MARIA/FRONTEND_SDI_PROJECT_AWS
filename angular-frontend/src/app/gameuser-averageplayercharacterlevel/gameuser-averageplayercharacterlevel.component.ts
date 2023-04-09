@@ -10,6 +10,13 @@ import { GameuserService } from '../gameuser.service';
 export class GameuserAverageplayercharacterlevelComponent implements OnInit{
   gameuseraverageplayercharacterleveldtos?: Gameuseraverageplayercharacterleveldto[]; 
 
+
+  //for pagination
+  totalPages: number[] = [];
+  totalElements: number = 0;
+  currentPage: number = 0;
+  pageSize: number = 10;
+
   constructor(private gameuserService:GameuserService){}
 
   ngOnInit(): void {
@@ -17,10 +24,12 @@ export class GameuserAverageplayercharacterlevelComponent implements OnInit{
   }
 
   private getGameuseraverageplayercharacterleveldtos(){
-    this.gameuserService.getGameUsersOrderedByAverageLevelOfPlayerCharacters().subscribe(data=>
+    this.gameuserService.getGameUsersOrderedByAverageLevelOfPlayerCharacters(this.currentPage,this.pageSize).subscribe(data=>
       {
-        this.gameuseraverageplayercharacterleveldtos=data;
-      }
-      );
+        this.gameuseraverageplayercharacterleveldtos=data.content;
+        this.totalElements=data.totalElements;
+        this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
+      });
   }
+
 }

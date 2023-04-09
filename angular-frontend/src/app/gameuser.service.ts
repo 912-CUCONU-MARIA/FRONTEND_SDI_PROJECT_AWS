@@ -62,8 +62,42 @@ export class GameuserService {
     return this.httpClient.post(`${this.baseURL}/gameusers`,gameuser);
   }
 
-  getGameUsersOrderedByAverageLevelOfPlayerCharacters(): Observable<Gameuseraverageplayercharacterleveldto[]> {
-    return this.httpClient.get<Gameuseraverageplayercharacterleveldto[]>(`${this.baseURL}/gameusers/averageplayercharacterlevel`);
+
+/*
+      getGameusersList(
+        page: number,
+        size: number,
+        sort: string | undefined = undefined,
+        direction: string | undefined = undefined
+      ): Observable<any> {
+        let params = new HttpParams()
+          .set("page", page.toString())
+          .set("size", size.toString());
+
+        if (sort && direction) {
+          params = params.set("sort", sort).set("direction", direction);
+        }
+
+        return this.httpClient.get<any>(`${this.baseURL}/gameusers`, {
+          params: params,
+        });
+      }
+*/
+
+
+  // getGameUsersOrderedByAverageLevelOfPlayerCharacters(): Observable<Gameuseraverageplayercharacterleveldto[]> {
+  //   return this.httpClient.get<Gameuseraverageplayercharacterleveldto[]>(`${this.baseURL}/gameusers/averageplayercharacterlevel`);
+  // }
+  getGameUsersOrderedByAverageLevelOfPlayerCharacters(
+    page: number,
+    size: number
+  ): Observable<any> {
+    let params = new HttpParams()
+          .set("page", page.toString())
+          .set("size", size.toString());
+    return this.httpClient.get<Gameuseraverageplayercharacterleveldto[]>(`${this.baseURL}/gameusers/averageplayercharacterlevel`, {
+      params: params,
+    });
   }
 
   getGameuserById(id:number): Observable<Gameuser>{
