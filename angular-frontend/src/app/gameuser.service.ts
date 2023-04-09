@@ -20,12 +20,24 @@ export class GameuserService {
   //       return this.httpClient.get<Gameuser[]>(`${this.baseURL}/gameusers`);
   //   }
 
-  getGameusersList(page: number, size: number): Observable<any> {
-    const params = new HttpParams()
+  // getGameusersList(page: number, size: number): Observable<any> {
+  //   const params = new HttpParams()
+  //     .set('page', page.toString())
+  //     .set('size', size.toString());
+  //   return this.httpClient.get<any>(`${this.baseURL}/gameusers`, { params: params });
+  // }
+  getGameusersList(page: number, size: number, sort?: string, direction?: string): Observable<any> {
+    let params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
+
+    if (sort && direction) {
+        params = params.set('sort', sort).set('direction', direction);
+    }
+
     return this.httpClient.get<any>(`${this.baseURL}/gameusers`, { params: params });
-  }
+}
+
 
   createGameuser(gameuser:Gameuser):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}/gameusers`,gameuser);
