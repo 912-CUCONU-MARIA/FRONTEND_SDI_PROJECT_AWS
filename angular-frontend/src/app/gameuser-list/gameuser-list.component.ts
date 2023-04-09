@@ -50,9 +50,11 @@ export class GameuserListComponent implements OnInit{
       .getGameusersList(this.currentPage, this.pageSize, this.sortColumn ?? undefined, this.sortDirection ?? undefined)
       .subscribe((data) => {
         this.gameusers = data.content;
-        this.totalPages = data.totalPages;
+        this.totalElements = data.totalElements;
+        this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
       });
   }
+  
   
 
   setPage(page: number) {
