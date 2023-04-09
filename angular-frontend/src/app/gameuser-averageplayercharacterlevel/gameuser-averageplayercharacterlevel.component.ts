@@ -32,4 +32,9 @@ export class GameuserAverageplayercharacterlevelComponent implements OnInit{
       });
   }
 
+  setPage(page: number) {
+    this.currentPage = page;
+    this.getGameuseraverageplayercharacterleveldtos();
+  }
+
 }
