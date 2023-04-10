@@ -2,9 +2,12 @@
 
 <!-- Custom Paginator -->
 <div class="paginator">
-    <button *ngFor="let page of totalPages" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+    <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+    <span *ngIf="pageRange[pageRange.length-1] < totalPages - 1">...</span>
+    <button *ngIf="pageRange[pageRange.length-1] < totalPages - 1" (click)="setPage(pageRange[pageRange.length-1] + 1)">{{ pageRange[pageRange.length-1] + 2 }}</button>
   </div>
   
+
   <!-- Paginator CSS styles -->
   <style>
     .paginator {
@@ -31,6 +34,7 @@
       color: white;
     }
   </style>
+  
   
 
 <button (click)="mySort(true)">ASC by FirstName</button>

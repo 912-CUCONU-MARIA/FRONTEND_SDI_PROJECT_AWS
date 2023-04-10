@@ -62,6 +62,16 @@ export class GameuserListComponent implements OnInit{
     this.getGameusers();
   }
 
+  get pageRange() {
+    const left = Math.max(0, this.currentPage - 2);
+    const right = Math.min(this.totalPages.length - 1, this.currentPage + 2);
+    const withDots = [...Array(this.totalPages.length).keys()].filter(i => i === 0 || i === this.totalPages.length - 1 || (i >= left && i <= right));
+    return withDots;
+  }
+  
+   
+  
+
 
   updateGameuser(id: number){
     this.router.navigate(['update-gameuser',id]);
