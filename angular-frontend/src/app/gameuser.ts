@@ -6,4 +6,5 @@ export class Gameuser {
     activeStatus?:boolean;
     username?:string;
     password?:string;
+    noPlayerCharacters?: number;
 }

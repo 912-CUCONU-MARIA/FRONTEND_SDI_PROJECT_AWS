@@ -1,7 +1,7 @@
 <h2> GameUser List</h2>
 
 <!-- Custom Paginator -->
-<div class="paginator">
+  <div class="paginator">
     <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
     <span *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1">...</span>
     <button *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1" (click)="setPage(pageRange[pageRange.length-1] + 1)">{{ pageRange[pageRange.length-1] + 2 }}</button>
@@ -47,6 +47,7 @@
         <th> Active Status</th>
         <!-- <th> Username</th>
         <th> Password</th> -->
+        <th> #PlayerCharacters owned</th>
         <th> Actions </th>
     </thead>
     <tbody>
@@ -55,6 +56,7 @@
             <td>{{gameuser.lastName}}</td>
             <td>{{gameuser.emailAddress}}</td>
             <td>{{gameuser.activeStatus}}</td>
+            <td>{{gameuser.noPlayerCharacters}}</td>
             <!-- <td>{{gameuser.username}}</td>
             <td>{{gameuser.password}}</td> -->
             <td>
