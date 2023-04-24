@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameuserListComponent } from './gameuser-list/gameuser-list.component';
+import { GameuserListComponent } from './gameuser_folder/gameuser-list/gameuser-list.component';
 import { CreateGameuserComponent } from './gameuser_folder/create-gameuser/create-gameuser.component';
 import { GameuserAverageplayercharacterlevelComponent } from './gameuser_folder/gameuser-averageplayercharacterlevel/gameuser-averageplayercharacterlevel.component';
-import { UpdateGameuserComponent } from './update-gameuser/update-gameuser.component';
-import { GameuserDetailsComponent } from './gameuser-details/gameuser-details.component';
+import { UpdateGameuserComponent } from './gameuser_folder/update-gameuser/update-gameuser.component';
+import { GameuserDetailsComponent } from './gameuser_folder/gameuser-details/gameuser-details.component';
 
 const routes: Routes = [
   {path:'gameusers',component:GameuserListComponent}, //in app.component.html <a routerLink="gameusers" class="nav-link"> GameUser List</a>
