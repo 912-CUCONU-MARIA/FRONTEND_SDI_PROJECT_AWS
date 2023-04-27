@@ -12,6 +12,8 @@ import { UpdateGameuserComponent } from './gameuser_folder/update-gameuser/updat
 import { GameuserDetailsComponent } from './gameuser_folder/gameuser-details/gameuser-details.component';
 import { ItemListComponent } from './item_folder/item-list/item-list.component';
 import { CreateItemComponent } from './item_folder/create-item/create-item.component';
+import { ItemDetailsComponent } from './item_folder/item-details/item-details.component';
+import { UpdateItemComponent } from './item_folder/update-item/update-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CreateItemComponent } from './item_folder/create-item/create-item.compo
     UpdateGameuserComponent,
     GameuserDetailsComponent,
     ItemListComponent,
-    CreateItemComponent
+    CreateItemComponent,
+    ItemDetailsComponent,
+    UpdateItemComponent
   ],
   imports: [
     BrowserModule,

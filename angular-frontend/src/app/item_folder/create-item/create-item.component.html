@@ -1,1 +1,44 @@
-<p>create-item works!</p>
+<div class="col-md-6 offset-md-3">
+<h3>Create Item</h3>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group mb-3">
+        <label> Item Name</label>
+        <input type="text" class="form-control" id="itemName"
+            [(ngModel)]="item.itemName" name="itemName">
+    </div>
+
+    <div class="form-group mb-3">
+        <label> Item Rarity</label>
+        <input type="text" class="form-control" id="itemRarity"
+            [(ngModel)]="item.itemRarity" name="itemRarity">
+    </div>
+
+    <div class="form-group mb-3">
+        <label> Item Type</label>
+        <input type="text" class="form-control" id="itemType"
+            [(ngModel)]="item.itemType" name="itemType">
+    </div>
+
+    <div class="form-group mb-3">
+        <label> Item Effect</label>
+        <input type="text" class="form-control" id="itemEffect"
+            [(ngModel)]="item.itemEffect" name="itemEffect">
+    </div>
+
+
+    <div class="form-group mb-3">
+        <label> Item Level</label>
+        <input type="number" class="form-control" id="itemLevel"
+            [(ngModel)]="item.itemLevel" name="itemLevel">
+    </div>
+
+    <div class="form-group mb-3">
+        <label> Description</label>
+        <input type="text" class="form-control" id="description"
+            [(ngModel)]="item.description" name="description">
+    </div>
+
+    <button class="btn btn-success" type="submit">Submit</button>
+
+</form>
+</div>
