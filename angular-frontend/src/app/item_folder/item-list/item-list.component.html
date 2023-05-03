@@ -42,7 +42,7 @@
         <th> Item Type</th>
         <th> Item Level</th>
         <!-- effect, description in details -->
-        <th> #PlayerCharacters owning</th>
+        <th> #Number of existing copies</th>
         <th> Actions </th>
     </thead>
     <tbody>
@@ -52,7 +52,7 @@
             <td>{{item.itemType}}</td>
             <td>{{item.itemLevel}}</td>
             <td>{{item.description}}</td>
-            <td>{{item.numberOfPlayerCharactersOwning}}</td>
+            <td>{{item.numberOfCopies}}</td>
             <td>
                 <button (click)="updateItem(item.id)" class="btn btn-info" > Update</button>
                 <button (click)="confirmDelete(item.id)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>

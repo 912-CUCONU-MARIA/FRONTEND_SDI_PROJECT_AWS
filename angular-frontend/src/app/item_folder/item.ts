@@ -6,5 +6,5 @@ export class Item {
     itemEffect?: string;
     itemLevel?: number;
     description?: string;
-    numberOfPlayerCharactersOwning?: number;
+    numberOfCopies?: number;
 }
