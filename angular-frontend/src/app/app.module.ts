@@ -14,6 +14,10 @@ import { ItemListComponent } from './item_folder/item-list/item-list.component';
 import { CreateItemComponent } from './item_folder/create-item/create-item.component';
 import { ItemDetailsComponent } from './item_folder/item-details/item-details.component';
 import { UpdateItemComponent } from './item_folder/update-item/update-item.component';
+import { PlayercharacterListComponent } from './playercharacter_folder/playercharacter-list/playercharacter-list.component';
+import { CreatePlayercharacterComponent } from './playercharacter_folder/create-playercharacter/create-playercharacter.component';
+import { PlayercharacterDetailsComponent } from './playercharacter_folder/playercharacter-details/playercharacter-details.component';
+import { UpdatePlayercharacterComponent } from './playercharacter_folder/update-playercharacter/update-playercharacter.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { UpdateItemComponent } from './item_folder/update-item/update-item.compo
     ItemListComponent,
     CreateItemComponent,
     ItemDetailsComponent,
-    UpdateItemComponent
+    UpdateItemComponent,
+    PlayercharacterListComponent,
+    CreatePlayercharacterComponent,
+    PlayercharacterDetailsComponent,
+    UpdatePlayercharacterComponent
   ],
   imports: [
     BrowserModule,

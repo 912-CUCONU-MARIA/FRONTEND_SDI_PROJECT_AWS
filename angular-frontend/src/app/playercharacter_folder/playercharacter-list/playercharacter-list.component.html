@@ -1,0 +1,64 @@
+<h2> PlayerCharacter List</h2>
+
+<!-- Custom Paginator -->
+<div class="paginator">
+    <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+    <span *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1">...</span>
+    <button *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1" (click)="setPage(pageRange[pageRange.length-1] + 1)">{{ pageRange[pageRange.length-1] + 2 }}</button>
+  </div>
+
+  <!-- Paginator CSS styles -->
+  <style>
+    .paginator {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .paginator button {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      color: black;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 4px;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+    .paginator button:hover:not(.active) {
+      background-color: #ddd;
+    }
+    .paginator button.active {
+      background-color: #2196F3;
+      color: white;
+    }
+  </style>  
+
+
+<table class="table table-striped">
+    <thead>
+        <th> Playercharacter Name</th>
+        <th> Level</th>
+        <th> Experience</th>
+        <th> ClassId</th>
+        <th> GameUserId</th>
+        <th> #Number of items owned</th>
+        <th> Actions </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let playercharacter of playercharacters">
+            <td>{{playercharacter.pc_name}}</td>
+            <td>{{playercharacter.level}}</td>
+            <td>{{playercharacter.experience}}</td>
+            <td>{{playercharacter.classId}}</td>
+            <td>{{playercharacter.gameUserId}}</td>
+            <td>{{playercharacter.numberOfItemsOwned}}</td>
+            <td>
+                <button (click)="updatePlayercharacter(playercharacter.id)" class="btn btn-info" > Update</button>
+                <button (click)="confirmDelete(playercharacter.id)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click)="playercharacterDetails(playercharacter.id)" class="btn btn-info" style="margin-left: 10px"> Details</button>
+
+            </td>
+        </tr>    
+    </tbody>
+</table>

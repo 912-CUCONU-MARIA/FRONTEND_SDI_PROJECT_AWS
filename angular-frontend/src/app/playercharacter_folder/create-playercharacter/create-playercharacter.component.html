@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Create Playercharacter</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+            <label> Playercharacter Name</label>
+            <input type="text" class="form-control" id="pc_name"
+                [(ngModel)]="playercharacter.pc_name" name="pc_name">
+        </div>
+    
+        <div class="form-group mb-3">
+            <label> Level</label>
+            <input type="number" class="form-control" id="level"
+                [(ngModel)]="playercharacter.level" name="level">
+        </div>
+    
+        <div class="form-group mb-3">
+            <label> Experience</label>
+            <input type="number" class="form-control" id="experience"
+                [(ngModel)]="playercharacter.experience" name="experience">
+        </div>
+    
+        <div class="form-group mb-3">
+            <label> ClassId</label>
+            <input type="number" class="form-control" id="classId"
+                [(ngModel)]="playercharacter.classId" name="classId">
+        </div>
+    
+    
+        <div class="form-group mb-3">
+            <label> GameUserId</label>
+            <input type="number" class="form-control" id="gameUserId"
+                [(ngModel)]="playercharacter.gameUserId" name="gameUserId">
+        </div>
+    
+        <button class="btn btn-success" type="submit">Submit</button>
+    
+    </form>
+    </div>
