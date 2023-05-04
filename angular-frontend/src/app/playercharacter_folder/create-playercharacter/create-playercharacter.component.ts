@@ -16,9 +16,10 @@ export class CreatePlayercharacterComponent implements OnInit{
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.gameUserId = params['gameUserId'];
+      this.gameUserId = parseInt(params['gameUserId'], 10);
     });
   }
+  
 
   savePlayercharacter(){
     this.playercharacter.gameUserId = this.gameUserId;
