@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { Playercharacter } from '../playercharacter';
+import { Playercharacterusername } from '../playercharacterusername';
 import { ActivatedRoute } from '@angular/router';
 import { PlayercharacterService } from '../playercharacter.service';
 
@@ -12,7 +12,7 @@ import { PlayercharacterService } from '../playercharacter.service';
 export class PlayercharacterDetailsComponent implements OnInit{
 
   id!:number
-  playercharacter:Playercharacter=new Playercharacter();
+  playercharacter:Playercharacterusername=new Playercharacterusername();
   constructor(private route:ActivatedRoute, private playercharacterService:PlayercharacterService){
   }
 
