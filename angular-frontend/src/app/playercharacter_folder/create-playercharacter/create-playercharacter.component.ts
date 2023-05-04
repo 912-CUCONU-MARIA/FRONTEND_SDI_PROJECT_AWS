@@ -25,15 +25,19 @@ export class CreatePlayercharacterComponent implements OnInit{
     this.playercharacterService.createPlayercharacter(this.playercharacter).subscribe(data=>
       {
        console.log(data);
-       this.goToPlayercharacterList();
+       this.goToGameuserList();
       },
       error=>console.log(error));
   }
   
 
-  goToPlayercharacterList(){
-    this.router.navigate(['/playercharacters']);
+  // goToPlayercharacterList(){
+  //   this.router.navigate(['/playercharacters']);
+  // }
+  goToGameuserList(){
+    this.router.navigate(['/gameusers']);
   }
+
 
   onSubmit(): void{
     console.log(this.playercharacter);
