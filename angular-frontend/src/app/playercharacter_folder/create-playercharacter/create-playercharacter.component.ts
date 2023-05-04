@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Playercharacter } from '../playercharacter';
 import { PlayercharacterService } from '../playercharacter.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute,Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-playercharacter',
@@ -10,14 +10,18 @@ import {Router} from '@angular/router';
 })
 export class CreatePlayercharacterComponent implements OnInit{
   playercharacter:Playercharacter=new Playercharacter();
+  gameUserId!: number;
 
-  constructor(private playercharacterService: PlayercharacterService, private router:Router){}
+  constructor(private playercharacterService: PlayercharacterService, private router:Router, private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    
+    this.activatedRoute.params.subscribe(params => {
+      this.gameUserId = params['gameUserId'];
+    });
   }
 
   savePlayercharacter(){
+    this.playercharacter.gameUserId = this.gameUserId;
     this.playercharacterService.createPlayercharacter(this.playercharacter).subscribe(data=>
       {
        console.log(data);
@@ -25,6 +29,7 @@ export class CreatePlayercharacterComponent implements OnInit{
       },
       error=>console.log(error));
   }
+  
 
   goToPlayercharacterList(){
     this.router.navigate(['/playercharacters']);
