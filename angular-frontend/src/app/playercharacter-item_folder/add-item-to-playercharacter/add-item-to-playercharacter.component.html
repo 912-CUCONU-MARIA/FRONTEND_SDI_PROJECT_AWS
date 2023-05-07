@@ -8,7 +8,7 @@
         <input [(ngModel)]="searchQuery" (input)="searchItems()" class="form-control" />
         <ul class="autocomplete-results" *ngIf="searchResults.length > 0">
             <li *ngFor="let result of searchResults" (click)="selectItem(result)">
-                {{result.name}}, {{result.effect}}
+                {{result.itemName}}, {{result.itemEffect}}
             </li>
         </ul>
     </div>
