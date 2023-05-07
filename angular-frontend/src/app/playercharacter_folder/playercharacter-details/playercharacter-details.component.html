@@ -14,9 +14,11 @@
     </div>
     <div>
         <label><b>GameUser Username: </b></label> {{playercharacter.gameUserUsername}}
-        <!-- change this to gameuser username -->
     </div>
     <div>
         <label><b>#Number of items owned: </b></label> {{playercharacter.numberOfItemsOwned}}
     </div>
+    <button (click)="addItemToPlayercharacter()" class="btn btn-info" > Add Item to this PlayerCharacter</button>
 </div>
+
+<app-add-item-to-playercharacter *ngIf="showAddItemModal" (close)="closeAddItemModal()" (submitData)="addItemToPlayerCharacter($event)"></app-add-item-to-playercharacter>

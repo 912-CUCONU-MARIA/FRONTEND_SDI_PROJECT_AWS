@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Item to PlayerCharacter</h4>
+    <button type="button" class="close" (click)="closeModal()">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label>Search Item:</label>
+        <input [(ngModel)]="searchQuery" (input)="searchItems()" class="form-control" />
+        <ul class="autocomplete-results" *ngIf="searchResults.length > 0">
+            <li *ngFor="let result of searchResults" (click)="selectItem(result)">
+                {{result.name}}, {{result.effect}}
+            </li>
+        </ul>
+    </div>
+    <div class="form-group" *ngIf="selectedItem">
+        <label>Is Equipped:</label>
+        <input type="checkbox" [(ngModel)]="isEquipped" class="form-check-input" />
+    </div>
+    <div class="form-group" *ngIf="selectedItem">
+        <label>Upgrade Tier:</label>
+        <input type="number" [(ngModel)]="upgradeTier" class="form-control" />
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()" *ngIf="selectedItem">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+</div>

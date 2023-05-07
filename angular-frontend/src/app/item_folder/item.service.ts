@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {Item} from './item';
+import { Itemnameeffectdto } from './itemnameeffectdto';
 
 
 @Injectable({
@@ -40,6 +41,11 @@ export class ItemService {
 
   deleteItem(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/items/${id}`);
+  }
+
+  searchItems(query: string): Observable<Itemnameeffectdto[]> {
+    let params = new HttpParams().set('name', query);
+    return this.httpClient.get<Itemnameeffectdto[]>(`${this.baseURL}/search`, { params });
   }
 
 }

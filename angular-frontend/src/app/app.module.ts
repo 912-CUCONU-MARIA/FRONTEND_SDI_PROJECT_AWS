@@ -18,6 +18,7 @@ import { PlayercharacterListComponent } from './playercharacter_folder/playercha
 import { CreatePlayercharacterComponent } from './playercharacter_folder/create-playercharacter/create-playercharacter.component';
 import { PlayercharacterDetailsComponent } from './playercharacter_folder/playercharacter-details/playercharacter-details.component';
 import { UpdatePlayercharacterComponent } from './playercharacter_folder/update-playercharacter/update-playercharacter.component';
+import { AddItemToPlayercharacterComponent } from './playercharacter-item_folder/add-item-to-playercharacter/add-item-to-playercharacter.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UpdatePlayercharacterComponent } from './playercharacter_folder/update-
     PlayercharacterListComponent,
     CreatePlayercharacterComponent,
     PlayercharacterDetailsComponent,
-    UpdatePlayercharacterComponent
+    UpdatePlayercharacterComponent,
+    AddItemToPlayercharacterComponent
   ],
   imports: [
     BrowserModule,
