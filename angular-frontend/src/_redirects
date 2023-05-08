@@ -1,2 +1,2 @@
-/api/* http://marawanken.jumpingcrab.com/api/:splat 200!
+/api/* https://marawanken.jumpingcrab.com/api/:splat 200!
 /* /index.html 200
