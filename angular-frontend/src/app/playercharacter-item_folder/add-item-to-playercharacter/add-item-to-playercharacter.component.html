@@ -1,9 +1,9 @@
 <div class="modal-header">
     <h4 class="modal-title">Add Item to PlayerCharacter</h4>
-    <button type="button" class="close" (click)="closeModal()">&times;</button>
+    <!-- <button type="button" class="close" (click)="closeModal()">&times;</button> -->
 </div>
 <div class="modal-body">
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label>Search Item:</label>
         <input [(ngModel)]="searchQuery" (input)="searchItems()" class="form-control" />
         <ul class="autocomplete-results" *ngIf="searchResults.length > 0">
@@ -11,7 +11,23 @@
                 {{result.itemName}}, {{result.itemEffect}}
             </li>
         </ul>
+    </div> -->
+    <div class="form-group">
+        <label for="search-item">Search Item:</label>
+        <div class="input-group">
+            <!-- <input type="text" class="form-control" id="search-item" [(ngModel)]="searchQuery" (input)="searchItems()"> -->
+            <input type="text" class="form-control" id="search-item" [(ngModel)]="searchQuery" (input)="searchQuerySubject.next(searchQuery)">
+        </div>
+        <ul class="list-group mt-2" *ngIf="searchResults.length > 0">
+            <li class="list-group-item" *ngFor="let result of searchResults" (click)="selectItem(result)">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">{{ result.itemName }}</h5>
+                    <small>{{ result.itemEffect }}</small>
+                </div>
+            </li>
+        </ul>
     </div>
+    
     <div class="form-group" *ngIf="selectedItem">
         <label>Is Equipped:</label>
         <input type="checkbox" [(ngModel)]="isEquipped" class="form-check-input" />

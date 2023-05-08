@@ -1,0 +1,27 @@
+<div class="modal" tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update Item</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="isEquipped">Is Equipped</label>
+            <input type="checkbox" id="isEquipped" [(ngModel)]="updateItemForm.isEquipped" />
+          </div>
+          <div class="form-group">
+            <label for="upgradeTier">Upgrade Tier</label>
+            <input type="number" id="upgradeTier" class="form-control" [(ngModel)]="updateItemForm.upgradeTier" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="submitForm()">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -2,6 +2,8 @@ import { Component, OnInit  } from '@angular/core';
 import { Playercharacter } from '../playercharacter';
 import { PlayercharacterService } from '../playercharacter.service';
 import {Router} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-playercharacter-list',
@@ -18,6 +20,9 @@ export class PlayercharacterListComponent implements OnInit{
     currentPage: number = 0;
     pageSize: number = 10;
 
+    //for filter
+    filterLevel: number | null = null;
+
     constructor(private playercharacterService:PlayercharacterService
       ,private router: Router){}
 
@@ -25,14 +30,38 @@ export class PlayercharacterListComponent implements OnInit{
       this.getPlayercharacters();
       }
     
+    // private getPlayercharacters() {
+    //   this.playercharacterService
+    //     .getPlayercharactersList(this.currentPage, this.pageSize)
+    //     .subscribe((data) => {
+    //       this.playercharacters = data.content;
+    //       this.totalElements = data.totalElements;
+    //       this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
+    //     });
+    // }
     private getPlayercharacters() {
-      this.playercharacterService
-        .getPlayercharactersList(this.currentPage, this.pageSize)
-        .subscribe((data) => {
-          this.playercharacters = data.content;
-          this.totalElements = data.totalElements;
-          this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
-        });
+      let params = new HttpParams()
+        .set('page', this.currentPage.toString())
+        .set('size', this.pageSize.toString());
+    
+      if (this.filterLevel !== null) {
+        params = params.set('level', this.filterLevel.toString());
+      }
+    
+      const fetchMethod = this.filterLevel !== null
+        ? this.playercharacterService.getPlayercharactersByLevel(params)
+        : this.playercharacterService.getPlayercharactersList(params);
+    
+      fetchMethod.subscribe((data) => {
+        this.playercharacters = data.content;
+        this.totalElements = data.totalElements;
+        this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
+      });
+    }
+  
+    applyFilter() {
+      this.currentPage = 0;
+      this.getPlayercharacters();
     }
 
     setPage(page: number) {

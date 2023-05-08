@@ -6,4 +6,5 @@ export class Playercharacterusername {
     classId?: number;
     gameUserUsername?: string;
     numberOfItemsOwned?:number;
+    // itemsOwned :string[]=[];
 }

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameuserListComponent } from './gameuser_folder/gameuser-list/gameuser-list.component';
 import { CreateGameuserComponent } from './gameuser_folder/create-gameuser/create-gameuser.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameuserAverageplayercharacterlevelComponent } from './gameuser_folder/gameuser-averageplayercharacterlevel/gameuser-averageplayercharacterlevel.component';
 import { UpdateGameuserComponent } from './gameuser_folder/update-gameuser/update-gameuser.component';
 import { GameuserDetailsComponent } from './gameuser_folder/gameuser-details/gameuser-details.component';
@@ -19,6 +19,8 @@ import { CreatePlayercharacterComponent } from './playercharacter_folder/create-
 import { PlayercharacterDetailsComponent } from './playercharacter_folder/playercharacter-details/playercharacter-details.component';
 import { UpdatePlayercharacterComponent } from './playercharacter_folder/update-playercharacter/update-playercharacter.component';
 import { AddItemToPlayercharacterComponent } from './playercharacter-item_folder/add-item-to-playercharacter/add-item-to-playercharacter.component';
+import { UpdateItemOfPlayercharacterComponent } from './playercharacter-item_folder/update-item-of-playercharacter/update-item-of-playercharacter.component';
+import { ItemAverageplayercharacterlevelComponent } from './item_folder/item-averageplayercharacterlevel/item-averageplayercharacterlevel.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +38,16 @@ import { AddItemToPlayercharacterComponent } from './playercharacter-item_folder
     CreatePlayercharacterComponent,
     PlayercharacterDetailsComponent,
     UpdatePlayercharacterComponent,
-    AddItemToPlayercharacterComponent
+    AddItemToPlayercharacterComponent,
+    UpdateItemOfPlayercharacterComponent,
+    ItemAverageplayercharacterlevelComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

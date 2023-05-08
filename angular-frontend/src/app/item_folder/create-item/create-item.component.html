@@ -1,4 +1,4 @@
-<div class="col-md-6 offset-md-3">
+<!-- <div class="col-md-6 offset-md-3">
 <h3>Create Item</h3>
 <form (ngSubmit)="onSubmit()">
     <div class="form-group mb-3">
@@ -41,4 +41,57 @@
     <button class="btn btn-success" type="submit">Submit</button>
 
 </form>
-</div>
+</div> -->
+
+<div class="col-md-6 offset-md-3">
+    <h3>Create Item</h3>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label>Item Name</label>
+        <input type="text" class="form-control" formControlName="itemName">
+        <div *ngIf="itemForm.get('itemName')?.invalid && itemForm.get('itemName')?.touched" class="text-danger">
+          Item Name should not be blank
+        </div>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label>Item Rarity</label>
+        <input type="text" class="form-control" formControlName="itemRarity">
+        <div *ngIf="itemForm.get('itemRarity')?.invalid && itemForm.get('itemRarity')?.touched" class="text-danger">
+          Item Rarity should not be blank
+        </div>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label>Item Type</label>
+        <input type="text" class="form-control" formControlName="itemType">
+        <div *ngIf="itemForm.get('itemType')?.invalid && itemForm.get('itemType')?.touched" class="text-danger">
+          Item Type should not be blank
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label>Item Effect</label>
+        <input type="text" class="form-control" formControlName="itemEffect">
+        <div *ngIf="itemForm.get('itemEffect')?.invalid && itemForm.get('itemEffect')?.touched" class="text-danger">
+          Item Effect should not be blank
+        </div>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label>Item Level</label>
+        <input type="number" class="form-control" formControlName="itemLevel">
+        <div *ngIf="itemForm.get('itemLevel')?.invalid && itemForm.get('itemLevel')?.touched" class="text-danger">
+            <div *ngIf="itemForm.get('itemLevel')?.errors?.['required']">Item Level should not be blank</div>
+            <div *ngIf="itemForm.get('itemLevel')?.errors?.['min']">Item Level should not be less than 0</div>                       
+        </div>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label>Description</label>
+        <input type="text" class="form-control" formControlName="description">
+      </div>
+  
+      <button class="btn btn-success" type="submit" [disabled]="itemForm.invalid">Submit</button>
+    </form>
+  </div>

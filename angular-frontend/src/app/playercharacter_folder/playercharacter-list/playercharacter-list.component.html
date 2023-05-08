@@ -1,5 +1,32 @@
 <h2> PlayerCharacter List</h2>
 
+<!-- <div class="filter-by-level">
+  <label for="filterLevel">Filter by level greater than: </label>
+  <input type="number" min="0" [(ngModel)]="filterLevel" name="filterLevel" placeholder="Enter level" />
+  <button (click)="applyFilter()">Submit</button>
+</div> -->
+<!-- filter-->
+<div class="filter-by-level input-group mb-3">
+  <label for="filterLevel" class="input-group-text">Filter by level greater than: </label>
+  <input type="number" min="0" [(ngModel)]="filterLevel" name="filterLevel" placeholder="Enter level" class="form-control" />
+  <button (click)="applyFilter()" class="btn btn-primary">Submit</button>
+</div>
+
+
+<style>
+  .filter-by-level {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .filter-by-level label {
+    margin-right: 10px;
+  }
+  .filter-by-level .btn {
+    margin-left: 10px;
+  }
+</style>
+
 <!-- Custom Paginator -->
 <div class="paginator">
     <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>

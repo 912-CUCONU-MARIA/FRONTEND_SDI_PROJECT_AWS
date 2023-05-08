@@ -1,2 +1,2 @@
-/api/* http://127.0.0.1:80/api/:splat 200!
+/api/* http://marawanken.ignorelist.com/api/:splat 200!
 /* /index.html 200

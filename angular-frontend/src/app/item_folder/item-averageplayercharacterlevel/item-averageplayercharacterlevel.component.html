@@ -1,0 +1,51 @@
+<h2> Items List ordered by the average level of the PlayerCharacters that own them</h2>
+
+<!-- Custom Paginator -->
+<div class="paginator">
+    <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+    <span *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1">...</span>
+    <button *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1" (click)="setPage(pageRange[pageRange.length-1] + 1)">{{ pageRange[pageRange.length-1] + 2 }}</button>
+  </div>
+  
+  <!-- Paginator CSS styles -->
+  <style>
+    .paginator {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .paginator button {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      color: black;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 4px;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+    .paginator button:hover:not(.active) {
+      background-color: #ddd;
+    }
+    .paginator button.active {
+      background-color: #2196F3;
+      color: white;
+    }
+  </style>
+
+<table class="table table-striped">
+    <thead>
+        <th> Item Name</th>
+        <th> #Number of existing copies</th>
+        <th> Average Level</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let itemaverageplayercharacterleveldto of itemaverageplayercharacterleveldtos">
+            <td>{{itemaverageplayercharacterleveldto.itemName}}</td>
+            <td>{{itemaverageplayercharacterleveldto.numberOfCopies}}</td>
+            <td>{{itemaverageplayercharacterleveldto.averageLevel}}</td>
+        </tr>    
+    </tbody>
+</table>
+

@@ -1,4 +1,4 @@
-<h3> View Playercharacter Details</h3>
+<!-- <h3> View Playercharacter Details</h3>
 <div>
     <div>
         <label><b>Playercharacter Name: </b></label> {{playercharacter.pc_name}}
@@ -21,4 +21,87 @@
     <button (click)="addItemToPlayercharacter()" class="btn btn-info" > Add Item to this PlayerCharacter</button>
 </div>
 
+<app-add-item-to-playercharacter *ngIf="showAddItemModal" (close)="closeAddItemModal()" (submitData)="addItemToPlayerCharacter($event)"></app-add-item-to-playercharacter> -->
+<h3>View Playercharacter Details</h3>
+
+<!-- Custom Paginator -->
+<div class="paginator">
+    <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+    <span *ngIf="pageRange[pageRange.length - 1] < totalPages.length - 1">...</span>
+    <button *ngIf="pageRange[pageRange.length - 1] < totalPages.length - 1" (click)="setPage(pageRange[pageRange.length - 1] + 1)">{{ pageRange[pageRange.length - 1] + 2 }}</button>
+  </div>
+  <!-- Paginator CSS styles -->
+  <style>
+      .paginator {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+      .paginator button {
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+        color: black;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 4px;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+      }
+      .paginator button:hover:not(.active) {
+        background-color: #ddd;
+      }
+      .paginator button.active {
+        background-color: #2196F3;
+        color: white;
+      }
+    </style>  
+
+<div>
+  <div>
+    <label><b>Playercharacter Name: </b></label> {{ playercharacter.pc_name }}
+  </div>
+  <div>
+    <label><b>Level: </b></label> {{ playercharacter.level }}
+  </div>
+  <div>
+    <label><b>Experience: </b></label> {{ playercharacter.experience }}
+  </div>
+  <div>
+    <label><b>ClassId: </b></label> {{ playercharacter.classId }}
+  </div>
+  <div>
+    <label><b>GameUser Username: </b></label> {{ playercharacter.gameUserUsername }}
+  </div>
+  <div>
+    <label><b>#Number of items owned: </b></label> {{ playercharacter.numberOfItemsOwned }}
+  </div>
+  <button (click)="addItemToPlayercharacter()" class="btn btn-info">Add Item to this PlayerCharacter</button>
+</div>
+
 <app-add-item-to-playercharacter *ngIf="showAddItemModal" (close)="closeAddItemModal()" (submitData)="addItemToPlayerCharacter($event)"></app-add-item-to-playercharacter>
+
+<app-update-item-of-playercharacter *ngIf="showUpdateItemModal" [currentItem]="currentItemToUpdate" (close)="closeUpdateItemModal()" (submitData)="updateItem($event)"></app-update-item-of-playercharacter>
+
+<h3>Items Owned</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Is Equipped</th>
+      <th>Upgrade Tier</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.itemName }}</td>
+      <td>{{ item.isEquipped }}</td>
+      <td>{{ item.upgradeTier }}</td>
+      <td>
+        <button (click)="openUpdateItemModal(item)" class="btn btn-info">Update</button>
+        <button (click)="confirmDelete(item.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

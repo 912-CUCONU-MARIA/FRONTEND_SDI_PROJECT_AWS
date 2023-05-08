@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 
 import {Item} from './item';
 import { Itemnameeffectdto } from './itemnameeffectdto';
+import { Itemaverageplayercharacterleveldto } from './itemaverageplayercharacterleveldto';
 
 
 @Injectable({
@@ -27,6 +28,18 @@ export class ItemService {
     });
   }
 
+  getItemsOrderedByAverageLevelOfPlayerCharacters(
+    page: number,
+    size: number
+  ): Observable<any> {
+    let params = new HttpParams()
+          .set("page", page.toString())
+          .set("size", size.toString());
+    return this.httpClient.get<Itemaverageplayercharacterleveldto[]>(`${this.baseURL}/items/averageplayercharacterlevel`, {
+      params: params,
+    });
+  }
+
   createItem(item:Item):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}/items`,item);
   }
@@ -45,7 +58,7 @@ export class ItemService {
 
   searchItems(query: string): Observable<Itemnameeffectdto[]> {
     let params = new HttpParams().set('name', query);
-    return this.httpClient.get<Itemnameeffectdto[]>(`${this.baseURL}/search`, { params });
+    return this.httpClient.get<Itemnameeffectdto[]>(`${this.baseURL}/items/search`, { params });
   }
 
 }
