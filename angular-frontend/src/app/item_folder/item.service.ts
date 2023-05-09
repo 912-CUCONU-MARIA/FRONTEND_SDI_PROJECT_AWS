@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {Item} from './item';
 import { Itemnameeffectdto } from './itemnameeffectdto';
-import { Itemaverageplayercharacterleveldto } from './itemaverageplayercharacterleveldto';
+import { ItemStatisticPlayerCharacterDto } from './ItemStatisticPlayerCharacterDto';
 
 
 @Injectable({
@@ -28,14 +28,14 @@ export class ItemService {
     });
   }
 
-  getItemsOrderedByAverageLevelOfPlayerCharacters(
+  getItemsOrderedByNumberOfCopies(
     page: number,
     size: number
   ): Observable<any> {
     let params = new HttpParams()
           .set("page", page.toString())
           .set("size", size.toString());
-    return this.httpClient.get<Itemaverageplayercharacterleveldto[]>(`${this.baseURL}/items/averageplayercharacterlevel`, {
+    return this.httpClient.get<ItemStatisticPlayerCharacterDto[]>(`${this.baseURL}/items/sortedbynumberofcopies`, {
       params: params,
     });
   }

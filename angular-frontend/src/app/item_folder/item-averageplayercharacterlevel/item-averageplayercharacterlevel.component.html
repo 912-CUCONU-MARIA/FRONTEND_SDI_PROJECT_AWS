@@ -1,4 +1,4 @@
-<h2> Items List ordered by the average level of the PlayerCharacters that own them</h2>
+<h2> Items List ordered desc by the number of the PlayerCharacters that own them</h2>
 
 <!-- Custom Paginator -->
 <div class="paginator">
@@ -37,15 +37,16 @@
 <table class="table table-striped">
     <thead>
         <th> Item Name</th>
+        <th> Item Rarity</th>
+        <th> Item Level</th>
         <th> #Number of existing copies</th>
-        <th> Average Level</th>
     </thead>
     <tbody>
-        <tr *ngFor="let itemaverageplayercharacterleveldto of itemaverageplayercharacterleveldtos">
-            <td>{{itemaverageplayercharacterleveldto.itemName}}</td>
-            <td>{{itemaverageplayercharacterleveldto.numberOfCopies}}</td>
-            <td>{{itemaverageplayercharacterleveldto.averageLevel}}</td>
+        <tr *ngFor="let itemstatisticplayercharacter of itemstatisticplayercharacters">
+            <td>{{itemstatisticplayercharacter.itemName}}</td>
+            <td>{{itemstatisticplayercharacter.itemRarity}}</td>
+            <td>{{itemstatisticplayercharacter.itemLevel}}</td>
+            <td>{{itemstatisticplayercharacter.numberOfCopies}}</td>
         </tr>    
     </tbody>
 </table>
-

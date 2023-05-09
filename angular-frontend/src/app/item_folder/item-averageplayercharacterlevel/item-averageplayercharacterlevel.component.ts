@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Itemaverageplayercharacterleveldto } from '../itemaverageplayercharacterleveldto';
+import { ItemStatisticPlayerCharacterDto } from '../ItemStatisticPlayerCharacterDto';
 import { ItemService } from '../item.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-averageplayercharacterlevel.component.css']
 })
 export class ItemAverageplayercharacterlevelComponent implements OnInit{
-  itemaverageplayercharacterleveldtos?: Itemaverageplayercharacterleveldto[]; 
+  itemstatisticplayercharacter?: ItemStatisticPlayerCharacterDto[]; 
 
 //for pagination
 totalPages: number[] = [];
@@ -19,13 +19,13 @@ pageSize: number = 10;
 constructor(private itemService:ItemService){}
 
 ngOnInit(): void {
-  this.getItemaverageplayercharacterleveldtos();
+  this.getItemsOrderedByNumberOfCopies();
 }
 
-private getItemaverageplayercharacterleveldtos(){
-  this.itemService.getItemsOrderedByAverageLevelOfPlayerCharacters(this.currentPage,this.pageSize).subscribe(data=>
+private getItemsOrderedByNumberOfCopies(){
+  this.itemService.getItemsOrderedByNumberOfCopies(this.currentPage,this.pageSize).subscribe(data=>
     {
-      this.itemaverageplayercharacterleveldtos=data.content;
+      this.itemstatisticplayercharacter=data.content;
       this.totalElements=data.totalElements;
       this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
     });
@@ -33,7 +33,7 @@ private getItemaverageplayercharacterleveldtos(){
 
 setPage(page: number) {
   this.currentPage = page;
-  this.getItemaverageplayercharacterleveldtos();
+  this.getItemsOrderedByNumberOfCopies();
 }
 
 get pageRange() {
