@@ -8,7 +8,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-statisticplayercharacter.component.css']
 })
 export class ItemStatisticplayercharacterComponent implements OnInit{
-  itemstatisticplayercharacter?: ItemStatisticPlayerCharacterDto[]; 
+  itemstatisticplayercharacters?: ItemStatisticPlayerCharacterDto[]; 
 
 //for pagination
 totalPages: number[] = [];
@@ -25,7 +25,7 @@ ngOnInit(): void {
 private getItemsOrderedByNumberOfCopies(){
   this.itemService.getItemsOrderedByNumberOfCopies(this.currentPage,this.pageSize).subscribe(data=>
     {
-      this.itemstatisticplayercharacter=data.content;
+      this.itemstatisticplayercharacters=data.content;
       this.totalElements=data.totalElements;
       this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
     });
