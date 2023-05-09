@@ -40,12 +40,14 @@
         <th> First Name</th>
         <th> Last Name</th>
         <th> Average Level</th>
+        <th> #PlayerCharacters owned</th>
     </thead>
     <tbody>
         <tr *ngFor="let gameuseraverageplayercharacterleveldto of gameuseraverageplayercharacterleveldtos">
             <td>{{gameuseraverageplayercharacterleveldto.firstName}}</td>
             <td>{{gameuseraverageplayercharacterleveldto.lastName}}</td>
             <td>{{gameuseraverageplayercharacterleveldto.averageLevel}}</td>
+            <td>{{gameuser.numberOfPlayerCharacters}}</td>
         </tr>    
     </tbody>
 </table>
