@@ -3,9 +3,9 @@ import { ItemStatisticPlayerCharacterDto } from '../ItemStatisticPlayerCharacter
 import { ItemService } from '../item.service';
 
 @Component({
-  selector: 'app-item-statisticplayercharacterlevel',
-  templateUrl: './item-statisticplayercharacterlevel.component.html',
-  styleUrls: ['./item-statisticplayercharacterlevel.component.css']
+  selector: 'app-item-statisticplayercharacter',
+  templateUrl: './item-statisticplayercharacter.component.html',
+  styleUrls: ['./item-statisticplayercharacter.component.css']
 })
 export class ItemStatisticplayercharacterComponent implements OnInit{
   itemstatisticplayercharacter?: ItemStatisticPlayerCharacterDto[]; 
