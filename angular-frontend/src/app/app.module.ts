@@ -20,7 +20,7 @@ import { PlayercharacterDetailsComponent } from './playercharacter_folder/player
 import { UpdatePlayercharacterComponent } from './playercharacter_folder/update-playercharacter/update-playercharacter.component';
 import { AddItemToPlayercharacterComponent } from './playercharacter-item_folder/add-item-to-playercharacter/add-item-to-playercharacter.component';
 import { UpdateItemOfPlayercharacterComponent } from './playercharacter-item_folder/update-item-of-playercharacter/update-item-of-playercharacter.component';
-import { ItemAverageplayercharacterlevelComponent } from './item_folder/item-averageplayercharacterlevel/item-averageplayercharacterlevel.component';
+import { ItemStatisticplayercharacterComponent } from './item_folder/item-statisticplayercharacter/item-statisticplayercharacter.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { ItemAverageplayercharacterlevelComponent } from './item_folder/item-ave
     UpdatePlayercharacterComponent,
     AddItemToPlayercharacterComponent,
     UpdateItemOfPlayercharacterComponent,
-    ItemAverageplayercharacterlevelComponent
+    ItemStatisticplayercharacterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItemAverageplayercharacterlevelComponent } from './item-averageplayercharacterlevel.component';
+import { ItemStatisticplayercharacterComponent  } from './item-statisticplayercharacter.component';
 
 describe('ItemAverageplayercharacterlevelComponent', () => {
-  let component: ItemAverageplayercharacterlevelComponent;
-  let fixture: ComponentFixture<ItemAverageplayercharacterlevelComponent>;
+  let component: ItemStatisticplayercharacterComponent;
+  let fixture: ComponentFixture<ItemStatisticplayercharacterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemAverageplayercharacterlevelComponent ]
+      declarations: [ ItemStatisticplayercharacterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ItemAverageplayercharacterlevelComponent);
+    fixture = TestBed.createComponent(ItemStatisticplayercharacterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

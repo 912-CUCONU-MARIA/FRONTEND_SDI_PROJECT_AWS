@@ -13,7 +13,7 @@ import { PlayercharacterListComponent } from './playercharacter_folder/playercha
 import { CreatePlayercharacterComponent } from './playercharacter_folder/create-playercharacter/create-playercharacter.component';
 import { UpdatePlayercharacterComponent } from './playercharacter_folder/update-playercharacter/update-playercharacter.component';
 import { PlayercharacterDetailsComponent } from './playercharacter_folder/playercharacter-details/playercharacter-details.component';
-import { ItemAverageplayercharacterlevelComponent } from './item_folder/item-averageplayercharacterlevel/item-averageplayercharacterlevel.component';
+import { ItemAverageplayercharacterlevelComponent } from './item_folder/item-statisticplayercharacter/item-statisticplayercharacter.component';
 
 const routes: Routes = [
   {path:'gameusers',component:GameuserListComponent}, //in app.component.html <a routerLink="gameusers" class="nav-link"> GameUser List</a>

@@ -7,7 +7,7 @@ import { ItemService } from '../item.service';
   templateUrl: './item-averageplayercharacterlevel.component.html',
   styleUrls: ['./item-averageplayercharacterlevel.component.css']
 })
-export class ItemAverageplayercharacterlevelComponent implements OnInit{
+export class ItemStatisticplayercharacterComponent implements OnInit{
   itemstatisticplayercharacter?: ItemStatisticPlayerCharacterDto[]; 
 
 //for pagination
