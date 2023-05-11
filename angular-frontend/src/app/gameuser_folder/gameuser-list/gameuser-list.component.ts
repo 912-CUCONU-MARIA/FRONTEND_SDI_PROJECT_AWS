@@ -25,7 +25,7 @@ export class GameuserListComponent implements OnInit{
 
   ngOnInit(): void {
    this.currentPage=0;
-   this.getGameusers();
+   //this.getGameusers();
   }
 
   //for pagination2
@@ -59,7 +59,7 @@ export class GameuserListComponent implements OnInit{
     const totalPageNum = this.totalPages.length;
   
     // Always add the first 5 pages if they exist
-    for (let i = 1; i <= Math.min(5, totalPageNum); i++) {
+    for (let i = 0; i < Math.min(5, totalPageNum); i++) {
       result.push(i);
     }
   
