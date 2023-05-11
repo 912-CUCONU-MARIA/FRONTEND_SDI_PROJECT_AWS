@@ -60,7 +60,7 @@ export class GameuserListComponent implements OnInit{
     if(this.currentPage<10)
     {
       //add pages up to it
-      for (let i = 0; i < this.currentPage; i++) {
+      for (let i = 0; i <= this.currentPage-1 || i<Math.min(5, totalPageNum); i++) {
         result.push(i);
       }
     }
