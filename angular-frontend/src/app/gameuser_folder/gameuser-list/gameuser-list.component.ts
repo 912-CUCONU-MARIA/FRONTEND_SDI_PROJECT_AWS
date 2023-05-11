@@ -51,30 +51,28 @@ export class GameuserListComponent implements OnInit{
     let result: number[] = [];
   
     // Always add the first 5 pages and the last 5 pages
-    for (let i = 1; i <= 5; i++) {
-      // if (!result.includes(i)) 
-      result.push(i);
-      // if (!result.includes(this.totalPages.length - i + 1)) 
-      result.push(this.totalPages.length - i + 1);
+    for (let i = 0; i < 5; i++) {
+      if (!result.includes(i)) result.push(i);
+      if (!result.includes(this.totalPages.length - i - 1)) result.push(this.totalPages.length - i - 1);
     }
   
     // Handling the first 10 pages
-    if (this.currentPage < 11) {
-      for (let i = 1; i <= this.currentPage + 5; i++) {
+    if (this.currentPage < 10) {
+      for (let i = 1; i <= this.currentPage + 6; i++) {
         if (!result.includes(i)) result.push(i);
       }
     }
   
     // Handling middle pages
-    else if (this.currentPage >= 11 && this.currentPage < this.totalPages.length - 11) {
-      for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
+    else if (this.currentPage >= 10 && this.currentPage <= this.totalPages.length - 12) {
+      for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
         if (!result.includes(i)) result.push(i);
       }
     }
   
     // Handling last 12 pages
-    else if (this.currentPage >= this.totalPages.length - 11) {
-      for (let i = this.currentPage - 5; i <= this.currentPage; i++) {
+    else if (this.currentPage > this.totalPages.length - 12) {
+      for (let i = this.currentPage - 4; i <= this.currentPage; i++) {
         if (!result.includes(i)) result.push(i);
       }
     }
@@ -83,6 +81,7 @@ export class GameuserListComponent implements OnInit{
     result.sort((a, b) => a - b);
     return result;
   }
+  
   
   
   
