@@ -58,7 +58,7 @@ export class GameuserListComponent implements OnInit{
     const totalPageNum = this.totalPages.length;
   
     // Always add the first 5 pages if they exist
-    for (let i = 1; i <= Math.min(5, totalPageNum); i++) {
+    for (let i = 0; i <= Math.min(5, totalPageNum); i++) {
       result.push(i);
     }
   
@@ -123,25 +123,6 @@ export class GameuserListComponent implements OnInit{
   gameuserDetails(id:number){
     this.router.navigate(['gameuser-details',id]);
   }
-
-  // mySort(isAsc:boolean){
-  //   if(isAsc){
-  //     this.gameusers.sort((a,b)=>(a.firstName>b.firstName) ? 1: ((b.firstName>a.firstName) ? -1 : 0));
-  //   } else{
-  //     this.gameusers.sort((a,b)=>(a.firstName>b.firstName) ? -1: ((b.firstName>a.firstName) ? 1 : 0));
-  //   }
-
-  // }
-  // mySort(isAsc: boolean) {
-  //   const direction = isAsc ? 'asc' : 'desc';
-  //   const sort = 'firstName';
-  
-  //   this.gameuserService.getGameusersList(this.currentPage, this.pageSize, sort, direction).subscribe(data => {
-  //     this.gameusers = data.content;
-  //     this.totalElements = data.totalElements;
-  //     this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
-  //   });
-  // }
     mySort(isAsc: boolean) {
       const direction = isAsc ? 'asc' : 'desc';
       this.currentPage = 0;

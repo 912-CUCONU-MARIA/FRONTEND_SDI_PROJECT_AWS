@@ -8,7 +8,7 @@
   </div> -->
   <!-- Custom Paginator -->
 <div class="paginator">
-  <ng-container *ngFor="let page of pageRange; let i = index - 1">
+  <ng-container *ngFor="let page of pageRange; let i = index">
     <button *ngIf="shouldDisplayPage(i)" [class.active]="page === currentPage" (click)="setPage(page)">{{ page }}</button>
      <span *ngIf="shouldDisplayDots(i)">...</span>
   </ng-container>
