@@ -41,7 +41,7 @@ export class GameuserListComponent implements OnInit{
   
 
   setPage(page: number) {
-    this.currentPage = page - 1; // subtract 1 because pages start from 0
+    this.currentPage = page;
     this.getGameusers();
   }
   
