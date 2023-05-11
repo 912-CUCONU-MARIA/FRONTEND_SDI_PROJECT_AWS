@@ -46,43 +46,34 @@ export class GameuserListComponent implements OnInit{
     this.getGameusers();
   }
   
-  
 
-  //new pagination below comments
-  // get pageRange() {
-  //   const left = Math.max(0, this.currentPage - 2);
-  //   const right = Math.min(this.totalPages.length - 1, this.currentPage + 2);
-  //   const withDots = [...Array(this.totalPages.length).keys()].filter(i => i === 0 || i === this.totalPages.length - 1 || (i >= left && i <= right));
-  //   return withDots;
-  // }
   get pageRange() {
     let result: number[] = [];
-    const totalPageNum = this.totalPages.length;
   
     // Always add the first 5 pages and the last 5 pages
-    for (let i = 0; i < 5; i++) {
-      if (i < totalPageNum) result.push(i+1);
-      if (totalPageNum - 1 - i >= 0) result.push(totalPageNum - i);
+    for (let i = 1; i <= 5; i++) {
+      if (!result.includes(i)) result.push(i);
+      if (!result.includes(this.totalPages.length - i + 1)) result.push(this.totalPages.length - i + 1);
     }
   
     // Handling the first 10 pages
     if (this.currentPage < 10) {
-      for (let i = 5; i < 10; i++) {
-        if (!result.includes(i+1)) result.push(i+1);
+      for (let i = 1; i <= this.currentPage + 5; i++) {
+        if (!result.includes(i)) result.push(i);
       }
     }
   
     // Handling middle pages
-    else if (this.currentPage >= 10 && this.currentPage < totalPageNum - 11) {
-      for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
-        if (!result.includes(i+1)) result.push(i+1);
+    else if (this.currentPage >= 10 && this.currentPage < this.totalPages.length - 11) {
+      for (let i = this.currentPage - 4; i <= this.currentPage + 5; i++) {
+        if (!result.includes(i)) result.push(i);
       }
     }
   
     // Handling last 12 pages
-    else if (this.currentPage >= totalPageNum - 11) {
-      for (let i = this.currentPage - 5; i < this.currentPage + 1; i++) {
-        if (!result.includes(i+1)) result.push(i+1);
+    else if (this.currentPage >= this.totalPages.length - 11) {
+      for (let i = this.currentPage - 4; i <= this.currentPage + 1; i++) {
+        if (!result.includes(i)) result.push(i);
       }
     }
   
@@ -90,6 +81,7 @@ export class GameuserListComponent implements OnInit{
     result.sort((a, b) => a - b);
     return result;
   }
+  
   
   
   
