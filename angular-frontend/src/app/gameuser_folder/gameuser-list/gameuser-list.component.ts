@@ -24,6 +24,7 @@ export class GameuserListComponent implements OnInit{
     ,private router: Router){}
 
   ngOnInit(): void {
+   this.currentPage=0;
    this.getGameusers();
   }
 
@@ -58,38 +59,45 @@ export class GameuserListComponent implements OnInit{
     const totalPageNum = this.totalPages.length;
   
     // Always add the first 5 pages if they exist
-    for (let i = 0; i <= Math.min(5, totalPageNum); i++) {
+    for (let i = 1; i <= Math.min(5, totalPageNum); i++) {
       result.push(i);
     }
   
-
-    // If the current page is greater than 10, we add the middle pages
-    if (this.currentPage > 10) {
-      for (let i = this.currentPage - 2; i <= this.currentPage + 2; i++) {
+    // Handling middle pages
+    if (this.currentPage >= 11) {
+      for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
+        if (i > 0 && i <= totalPageNum && !result.includes(i)) {
+          result.push(i);
+        }
+      }
+    } else if (this.currentPage < 11) {
+      for (let i = 1; i <= this.currentPage + 5; i++) {
         if (!result.includes(i)) {
           result.push(i);
         }
       }
     }
-    else {
-      //current page+5 max pages;
-      for (let i = this.currentPage; i <= this.currentPage+5; i++) {
-        result.push(i);
-      }
-    }
   
-    // Always add the last 5 pages if they exist
-    for (let i = Math.max(totalPageNum - 5, 1); i <= totalPageNum; i++) {
-      if (!result.includes(i)) {
-        result.push(i);
+    // Handling last pages
+    if (this.currentPage > totalPageNum - 12) {
+      for (let i = this.currentPage - 5; i <= totalPageNum; i++) {
+        if (!result.includes(i)) {
+          result.push(i);
+        }
+      }
+    } else {
+      for (let i = totalPageNum - 4; i <= totalPageNum; i++) {
+        if (!result.includes(i)) {
+          result.push(i);
+        }
       }
     }
   
     // Sort the array and return it
     result.sort((a, b) => a - b);
-  
     return result;
   }
+  
   
     //new pagination func
     shouldDisplayPage(index: number): boolean {
