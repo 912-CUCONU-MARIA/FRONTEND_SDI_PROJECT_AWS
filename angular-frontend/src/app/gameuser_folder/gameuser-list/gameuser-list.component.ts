@@ -55,7 +55,7 @@ export class GameuserListComponent implements OnInit{
   //   return withDots;
   // }
   get pageRange() {
-    let result = [];
+    let result: number[] = [];
     const totalPageNum = this.totalPages.length;
   
     // Always add the first 5 pages if they exist
@@ -65,12 +65,14 @@ export class GameuserListComponent implements OnInit{
   
     // Handling middle pages
     if (this.currentPage >= 11) {
+      // Add 5 pages before the current page and 5 pages after
       for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
         if (i > 0 && i <= totalPageNum && !result.includes(i)) {
           result.push(i);
         }
       }
     } else if (this.currentPage < 11) {
+      // Add pages from 1 to current page + 5
       for (let i = 1; i <= this.currentPage + 5; i++) {
         if (!result.includes(i)) {
           result.push(i);
@@ -80,12 +82,14 @@ export class GameuserListComponent implements OnInit{
   
     // Handling last pages
     if (this.currentPage > totalPageNum - 12) {
+      // Add 5 pages before the current page and all pages till the end
       for (let i = this.currentPage - 5; i <= totalPageNum; i++) {
         if (!result.includes(i)) {
           result.push(i);
         }
       }
     } else {
+      // Always add the last 5 pages if they exist
       for (let i = totalPageNum - 4; i <= totalPageNum; i++) {
         if (!result.includes(i)) {
           result.push(i);
@@ -97,6 +101,7 @@ export class GameuserListComponent implements OnInit{
     result.sort((a, b) => a - b);
     return result;
   }
+  
   
   
     //new pagination func
