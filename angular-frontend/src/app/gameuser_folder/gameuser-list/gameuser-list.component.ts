@@ -99,12 +99,19 @@ export class GameuserListComponent implements OnInit{
   
   
     //new pagination func
-    shouldDisplayPage(index: number): boolean {
-      return this.pageRange[index - 1] === undefined || this.pageRange[index] - this.pageRange[index - 1] === 1;
-    }
+    // shouldDisplayPage(index: number): boolean {
+    //   return this.pageRange[index - 1] === undefined || this.pageRange[index] - this.pageRange[index - 1] === 1;
+    // }
     
+    // shouldDisplayDots(index: number): boolean {
+    //   return this.pageRange[index] !== undefined && this.pageRange[index] - (this.pageRange[index - 1] || 0) > 1;
+    // }
+    shouldDisplayPage(index: number): boolean {
+      return this.pageRange[index] !== undefined;
+    }
+        
     shouldDisplayDots(index: number): boolean {
-      return this.pageRange[index] !== undefined && this.pageRange[index] - (this.pageRange[index - 1] || 0) > 1;
+      return this.pageRange[index] !== undefined && this.pageRange[index + 1] !== undefined && this.pageRange[index + 1] - this.pageRange[index] > 1;
     }
     
     
