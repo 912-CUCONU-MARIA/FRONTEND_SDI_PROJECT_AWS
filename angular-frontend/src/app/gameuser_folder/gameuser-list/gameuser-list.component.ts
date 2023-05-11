@@ -51,12 +51,14 @@ export class GameuserListComponent implements OnInit{
     let result: number[] = [];
 
     // Always add the first 5 pages and the last 5 pages
-    for (let i = 1; i <= 5; i++) {
-      if (!result.includes(i)) result.push(i);
-    }
-    for (let i = 0; i < 5; i++) {
-      if (!result.includes(this.totalPages.length - i)) result.push(this.totalPages.length - i);
-    }
+// Always add the first 5 pages and the last 5 pages
+  for (let i = 1; i <= 5; i++) {
+    if (!result.includes(i)) result.push(i);
+  }
+  for (let i = 1; i <= 5; i++) {
+    if (!result.includes(this.totalPages.length - i + 1)) result.push(this.totalPages.length - i + 1);
+  }
+
 
     console.log(result);
 
