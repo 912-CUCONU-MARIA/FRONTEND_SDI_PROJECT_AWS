@@ -25,7 +25,7 @@ export class GameuserListComponent implements OnInit{
 
   ngOnInit(): void {
    this.currentPage=0;
-   //this.getGameusers();
+   this.getGameusers();
   }
 
   //for pagination2
@@ -42,9 +42,10 @@ export class GameuserListComponent implements OnInit{
   
 
   setPage(page: number) {
-    this.currentPage = page; // subtract 1 because pages start from 0
+    this.currentPage = page - 1; // Subtract 1 here
     this.getGameusers();
   }
+  
   
 
   //new pagination below comments
@@ -60,39 +61,32 @@ export class GameuserListComponent implements OnInit{
   
     // Always add the first 5 pages if they exist
     for (let i = 0; i < Math.min(5, totalPageNum); i++) {
-      result.push(i);
+      result.push(i + 1); // Add 1 here
     }
   
     // Handling middle pages
-    if (this.currentPage >= 11) {
-      // Add 5 pages before the current page and 5 pages after
-      for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
-        if (i > 0 && i <= totalPageNum && !result.includes(i)) {
-          result.push(i);
-        }
-      }
-    } else if (this.currentPage < 11) {
-      // Add pages from 1 to current page + 5
-      for (let i = 1; i <= this.currentPage + 5; i++) {
-        if (!result.includes(i)) {
-          result.push(i);
+    if (this.currentPage >= 10) { // Adjust this to start from 10 (which is 11 for users)
+      // Add 4 pages before the current page and 5 pages after
+      for (let i = this.currentPage - 4; i <= this.currentPage + 5; i++) {
+        if (i >= 0 && i < totalPageNum && !result.includes(i + 1)) { // Add 1 here
+          result.push(i + 1); // And here
         }
       }
     }
   
     // Handling last pages
-    if (this.currentPage > totalPageNum - 12) {
-      // Add 5 pages before the current page and all pages till the end
-      for (let i = this.currentPage - 5; i <= totalPageNum; i++) {
-        if (!result.includes(i)) {
-          result.push(i);
+    if (this.currentPage >= totalPageNum - 13) { // Adjust this to start from n - 13 (which is n - 12 for users)
+      // Add 4 pages before the current page and all pages till the end
+      for (let i = this.currentPage - 4; i < totalPageNum; i++) {
+        if (!result.includes(i + 1)) { // Add 1 here
+          result.push(i + 1); // And here
         }
       }
     } else {
       // Always add the last 5 pages if they exist
-      for (let i = totalPageNum - 4; i <= totalPageNum; i++) {
-        if (!result.includes(i)) {
-          result.push(i);
+      for (let i = totalPageNum - 5; i < totalPageNum; i++) {
+        if (!result.includes(i + 1)) { // Add 1 here
+          result.push(i + 1); // And here
         }
       }
     }
@@ -101,6 +95,7 @@ export class GameuserListComponent implements OnInit{
     result.sort((a, b) => a - b);
     return result;
   }
+  
   
   
   
