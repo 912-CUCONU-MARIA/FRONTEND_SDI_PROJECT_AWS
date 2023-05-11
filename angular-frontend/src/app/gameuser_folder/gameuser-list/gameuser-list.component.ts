@@ -61,32 +61,32 @@ export class GameuserListComponent implements OnInit{
   
     // Always add the first 5 pages if they exist
     for (let i = 0; i < Math.min(5, totalPageNum); i++) {
-      result.push(i + 1); // Add 1 here
+      result.push(i+1); // Adding 1 as pages start from 1 on frontend
     }
   
     // Handling middle pages
-    if (this.currentPage >= 10) { // Adjust this to start from 10 (which is 11 for users)
-      // Add 4 pages before the current page and 5 pages after
-      for (let i = this.currentPage - 4; i <= this.currentPage + 5; i++) {
-        if (i >= 0 && i < totalPageNum && !result.includes(i + 1)) { // Add 1 here
-          result.push(i + 1); // And here
+    if (this.currentPage >= 10 && this.currentPage < totalPageNum - 11) {
+      // Add 5 pages before the current page and 5 pages after
+      for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
+        if (!result.includes(i+1)) {  // Adding 1 as pages start from 1 on frontend
+          result.push(i+1);
         }
       }
     }
   
-    // Handling last pages
-    if (this.currentPage >= totalPageNum - 13) { // Adjust this to start from n - 13 (which is n - 12 for users)
-      // Add 4 pages before the current page and all pages till the end
+    // Handling last 12 pages
+    if (this.currentPage >= totalPageNum - 12) {
+      // Add 5 pages before the current page and all pages till the end
       for (let i = this.currentPage - 4; i < totalPageNum; i++) {
-        if (!result.includes(i + 1)) { // Add 1 here
-          result.push(i + 1); // And here
+        if (!result.includes(i+1)) { // Adding 1 as pages start from 1 on frontend
+          result.push(i+1);
         }
       }
     } else {
       // Always add the last 5 pages if they exist
       for (let i = totalPageNum - 5; i < totalPageNum; i++) {
-        if (!result.includes(i + 1)) { // Add 1 here
-          result.push(i + 1); // And here
+        if (!result.includes(i+1)) { // Adding 1 as pages start from 1 on frontend
+          result.push(i+1);
         }
       }
     }
@@ -95,6 +95,7 @@ export class GameuserListComponent implements OnInit{
     result.sort((a, b) => a - b);
     return result;
   }
+  
   
   
   
