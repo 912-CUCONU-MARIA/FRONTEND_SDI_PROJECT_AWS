@@ -54,43 +54,36 @@ export class GameuserListComponent implements OnInit{
   //   return withDots;
   // }
   get pageRange() {
-    const totalPageNum = this.totalPages.length;
-    const currentPage = this.currentPage;
-    
     let result = [];
+    const totalPageNum = this.totalPages.length;
   
-    // Always add the first 5 pages
-    for (let i = 1; i <= 5; i++) {
-      if (i <= totalPageNum) {
+    // Always add the first 5 pages if they exist
+    for (let i = 1; i <= Math.min(5, totalPageNum); i++) {
+      result.push(i);
+    }
+  
+    // If the current page is greater than 10, we add the middle pages
+    if (this.currentPage > 10) {
+      for (let i = this.currentPage - 2; i <= this.currentPage + 2; i++) {
+        if (!result.includes(i)) {
+          result.push(i);
+        }
+      }
+    }
+  
+    // Always add the last 5 pages if they exist
+    for (let i = Math.max(totalPageNum - 4, 1); i <= totalPageNum; i++) {
+      if (!result.includes(i)) {
         result.push(i);
       }
     }
   
-    // If current page is before or at page 10, we don't need to add the middle pages, just add the last 5 pages.
-    if (currentPage <= 10) {
-      for (let i = totalPageNum - 4; i <= totalPageNum; i++) {
-        if (!result.includes(i)) {
-          result.push(i);
-        }
-      }
-    } else {
-      // Add middle pages around the current page.
-      for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-        if (i > 5 && i <= totalPageNum - 5 && !result.includes(i)) {
-          result.push(i);
-        }
-      }
-      
-      // Add the last 5 pages
-      for (let i = totalPageNum - 4; i <= totalPageNum; i++) {
-        if (!result.includes(i)) {
-          result.push(i);
-        }
-      }
-    }
+    // Sort the array and return it
+    result.sort((a, b) => a - b);
   
     return result;
   }
+  
   
   
     //new pagination func
@@ -99,8 +92,9 @@ export class GameuserListComponent implements OnInit{
     }
     
     shouldDisplayDots(index: number): boolean {
-      return this.pageRange[index] !== undefined && this.pageRange[index] - this.pageRange[index - 1] > 1;
+      return this.pageRange[index] !== undefined && this.pageRange[index] - (this.pageRange[index - 1] || 0) > 1;
     }
+    
     
     
     
