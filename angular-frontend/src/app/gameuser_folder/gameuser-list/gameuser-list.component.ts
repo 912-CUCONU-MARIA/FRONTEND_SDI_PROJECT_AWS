@@ -52,8 +52,10 @@ export class GameuserListComponent implements OnInit{
   
     // Always add the first 5 pages and the last 5 pages
     for (let i = 1; i <= 5; i++) {
-      if (!result.includes(i)) result.push(i);
-      if (!result.includes(this.totalPages.length - i + 1)) result.push(this.totalPages.length - i + 1);
+      // if (!result.includes(i)) 
+      result.push(i);
+      // if (!result.includes(this.totalPages.length - i + 1)) 
+      result.push(this.totalPages.length - i + 1);
     }
   
     // Handling the first 10 pages
