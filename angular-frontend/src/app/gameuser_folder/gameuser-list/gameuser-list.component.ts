@@ -57,13 +57,21 @@ export class GameuserListComponent implements OnInit{
     let result = [];
     const totalPageNum = this.totalPages.length;
   
-    // Always add the first 5 pages if they exist
-    for (let i = 0; i <= Math.min(5, totalPageNum); i++) {
-      result.push(i);
+    if(this.currentPage<10)
+    {
+      //add pages up to it
+      for (let i = 0; i < this.currentPage; i++) {
+        result.push(i);
+      }
     }
   
     // If the current page is greater than 10, we add the middle pages
     if (this.currentPage > 10) {
+        // Always add the first 5 pages if they exist
+        for (let i = 0; i <= Math.min(5, totalPageNum); i++) {
+          result.push(i);
+        }
+
       for (let i = this.currentPage - 2; i <= this.currentPage + 2; i++) {
         if (!result.includes(i)) {
           result.push(i);
