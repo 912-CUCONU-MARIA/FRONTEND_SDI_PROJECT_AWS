@@ -57,22 +57,22 @@ export class GameuserListComponent implements OnInit{
     }
   
     // Handling the first 10 pages
-    if (this.currentPage < 10) {
+    if (this.currentPage < 11) {
       for (let i = 1; i <= this.currentPage + 5; i++) {
         if (!result.includes(i)) result.push(i);
       }
     }
   
     // Handling middle pages
-    else if (this.currentPage >= 10 && this.currentPage < this.totalPages.length - 11) {
-      for (let i = this.currentPage - 4; i <= this.currentPage + 5; i++) {
+    else if (this.currentPage >= 11 && this.currentPage < this.totalPages.length - 11) {
+      for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
         if (!result.includes(i)) result.push(i);
       }
     }
   
     // Handling last 12 pages
     else if (this.currentPage >= this.totalPages.length - 11) {
-      for (let i = this.currentPage - 4; i <= this.currentPage + 1; i++) {
+      for (let i = this.currentPage - 5; i <= this.currentPage; i++) {
         if (!result.includes(i)) result.push(i);
       }
     }
@@ -81,6 +81,7 @@ export class GameuserListComponent implements OnInit{
     result.sort((a, b) => a - b);
     return result;
   }
+  
   
   
   
