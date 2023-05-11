@@ -1,11 +1,19 @@
 <h2> GameUser List</h2>
 
 <!-- Custom Paginator -->
-  <div class="paginator">
+  <!-- <div class="paginator">
     <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
     <span *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1">...</span>
     <button *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1" (click)="setPage(pageRange[pageRange.length-1] + 1)">{{ pageRange[pageRange.length-1] + 2 }}</button>
-  </div>
+  </div> -->
+  <!-- Custom Paginator -->
+<div class="paginator">
+  <ng-container *ngFor="let page of pageRange; let i = index">
+    <button *ngIf="shouldDisplayPage(i)" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
+    <span *ngIf="shouldDisplayDots(i)">...</span>
+  </ng-container>
+</div>
+
   
 
   <!-- Paginator CSS styles -->

@@ -27,23 +27,6 @@ export class GameuserListComponent implements OnInit{
    this.getGameusers();
   }
 
-  // private getGameusers(){
-  //   this.gameuserService.getGameusersList().subscribe(data=>
-  //     {
-  //       this.gameusers=data;
-  //     }
-  //     );
-  // }
-
-  //for pagination
-  // private getGameusers() {
-  //   this.gameuserService.getGameusersList(this.currentPage, this.pageSize).subscribe(data => {
-  //     this.gameusers = data.content;
-  //     this.totalElements = data.totalElements;
-  //     this.totalPages = Array.from({ length: Math.ceil(data.totalElements / this.pageSize) }, (_, i) => i);
-  //   });
-  // }
-
   //for pagination2
   private getGameusers() {
     this.gameuserService
@@ -62,13 +45,40 @@ export class GameuserListComponent implements OnInit{
     this.getGameusers();
   }
 
+  //new pagination below comments
+  // get pageRange() {
+  //   const left = Math.max(0, this.currentPage - 2);
+  //   const right = Math.min(this.totalPages.length - 1, this.currentPage + 2);
+  //   const withDots = [...Array(this.totalPages.length).keys()].filter(i => i === 0 || i === this.totalPages.length - 1 || (i >= left && i <= right));
+  //   return withDots;
+  // }
   get pageRange() {
-    const left = Math.max(0, this.currentPage - 2);
-    const right = Math.min(this.totalPages.length - 1, this.currentPage + 2);
-    const withDots = [...Array(this.totalPages.length).keys()].filter(i => i === 0 || i === this.totalPages.length - 1 || (i >= left && i <= right));
-    return withDots;
-  }
-  
+    const fullRange = Array(this.totalPages.length).fill(0).map((_, i) => i);
+    const firstFive = fullRange.slice(0, 5);
+    const lastFive = fullRange.slice(-5);
+
+    let middlePages: number[] = [];
+    if (this.currentPage > 10) { // If current page is beyond 10
+        const start = Math.max(this.currentPage - 5, firstFive.length);
+        const end = Math.min(this.currentPage + 5, fullRange.length - lastFive.length);
+        middlePages = fullRange.slice(start, end + 1);
+    }
+    // Remove duplicates and sort
+    const result = Array.from(new Set([...firstFive, ...middlePages, ...lastFive])).sort((a, b) => a - b);
+    return result;
+}
+    //new pagination func
+    shouldDisplayPage(index: number): boolean {
+      return this.pageRange[index - 1] === undefined || this.pageRange[index] - this.pageRange[index - 1] === 1;
+    }
+    
+    shouldDisplayDots(index: number): boolean {
+      return this.pageRange[index - 1] !== undefined && this.pageRange[index] - this.pageRange[index - 1] > 1;
+    }
+    
+    //
+
+
    
   
 
