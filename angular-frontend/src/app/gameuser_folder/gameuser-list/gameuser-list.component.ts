@@ -41,7 +41,7 @@ export class GameuserListComponent implements OnInit{
   
 
   setPage(page: number) {
-    this.currentPage = page - 1; // subtract 1 because pages start from 0
+    this.currentPage = page ; // subtract 1 because pages start from 0
     this.getGameusers();
   }
   
@@ -72,7 +72,7 @@ export class GameuserListComponent implements OnInit{
     }
   
     // Always add the last 5 pages if they exist
-    for (let i = Math.max(totalPageNum - 4, 1); i <= totalPageNum; i++) {
+    for (let i = Math.max(totalPageNum - 5, 1); i <= totalPageNum; i++) {
       if (!result.includes(i)) {
         result.push(i);
       }
@@ -86,7 +86,7 @@ export class GameuserListComponent implements OnInit{
   
     //new pagination func
     shouldDisplayPage(index: number): boolean {
-      return this.pageRange[index] === undefined || this.pageRange[index] - this.pageRange[index] === 1;
+      return this.pageRange[index - 1] === undefined || this.pageRange[index] - this.pageRange[index - 1] === 1;
     }
     
     shouldDisplayDots(index: number): boolean {
