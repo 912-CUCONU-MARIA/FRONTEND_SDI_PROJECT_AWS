@@ -71,11 +71,12 @@ export class GameuserListComponent implements OnInit{
 
 
     // Handling middle pages
-    else if (this.currentPage >= 10 && this.currentPage < this.totalPages.length - 11) {
-        for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
-            if (!result.includes(i)) result.push(i);
-        }
+    else if (this.currentPage >= 9 && this.currentPage < this.totalPages.length - 13) {
+      for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
+        if (!result.includes(i)) result.push(i);
+      }
     }
+    
 
     // Handling last 12 pages
     else if (this.currentPage >= this.totalPages.length - 11) {
