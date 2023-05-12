@@ -51,39 +51,38 @@ export class GameuserListComponent implements OnInit{
     let result: number[] = [];
 
     // Always add the first 5 pages and the last 5 pages
-  for (let i = 1; i <= 5; i++) {
-    if (!result.includes(i)) result.push(i);
-  }
-  for (let i = 1; i <= 5; i++) {
-    if (!result.includes(this.totalPages.length - i + 1)) result.push(this.totalPages.length - i + 1);
-  }
+    for (let i = 1; i <= 5; i++) {
+        if (!result.includes(i)) result.push(i);
+    }
+    for (let i = 1; i <= 5; i++) {
+        if (!result.includes(this.totalPages.length - i + 1)) result.push(this.totalPages.length - i + 1);
+    }
 
-    // Handling the first 10 pages
-if (this.currentPage < 10) {
-  for (let i = 1; i <= Math.min(11, this.currentPage + 6); i++) {
-      if (!result.includes(i)) result.push(i);
-  }
-}
-
-// Handling middle pages
-else if (this.currentPage >= 10 && this.currentPage <= this.totalPages.length - 14) {
-  for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
-      if (!result.includes(i)) result.push(i);
-  }
-}
-
-// Handling last 12 pages
-else if (this.currentPage > this.totalPages.length - 14) {
-  for (let i = this.totalPages.length - 10; i <= this.totalPages.length; i++) {
-      if (!result.includes(i)) result.push(i);
-  }
-}
-
+    // Handling the first 11 pages
+    if (this.currentPage < 11) {
+        for (let i = 1; i <= Math.min(11, this.currentPage + 5); i++) {
+            if (!result.includes(i)) result.push(i);
+        }
+    }
+    // Handling middle pages
+    else if (this.currentPage >= 11 && this.currentPage <= this.totalPages.length - 15) {
+        for (let i = this.currentPage - 5; i <= this.currentPage + 5; i++) {
+            if (!result.includes(i)) result.push(i);
+        }
+    }
+    // Handling last 13 pages
+    else if (this.currentPage > this.totalPages.length - 15) {
+        for (let i = this.totalPages.length - 11; i <= this.totalPages.length; i++) {
+            if (!result.includes(i)) result.push(i);
+        }
+    }
 
     // Sort the array and return it
     result.sort((a, b) => a - b);
+    console.log(result);
     return result;
 }
+
 
   
   
