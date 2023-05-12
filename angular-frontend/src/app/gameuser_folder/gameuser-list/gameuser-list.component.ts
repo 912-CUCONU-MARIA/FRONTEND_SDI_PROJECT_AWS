@@ -60,7 +60,7 @@ export class GameuserListComponent implements OnInit{
 
     // Handling the first 11 pages
     if (this.currentPage < 11) {
-        for (let i = 1; i <= Math.min(11, this.currentPage + 5); i++) {
+        for (let i = 1; i <= Math.min(11, this.currentPage + 6); i++) {
             if (!result.includes(i)) result.push(i);
         }
     }
@@ -82,6 +82,7 @@ export class GameuserListComponent implements OnInit{
     console.log(result);
     return result;
 }
+
 
 
   
