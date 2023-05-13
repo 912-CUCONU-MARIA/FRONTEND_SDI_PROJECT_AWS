@@ -52,65 +52,58 @@ export class GameuserListComponent implements OnInit{
 
     // Always add the first 5 pages and the last 5 pages
     for (let i = 1; i <= 5; i++) {
-        if (!result.includes(i)) result.push(i);
+        result.push(i);
     }
     for (let i = 0; i < 5; i++) {
-        if (!result.includes(this.totalPages.length - i)) result.push(this.totalPages.length - i);
+        result.push(this.totalPages.length - i);
     }
 
-    // Handling the first 7 pages
-    if (this.currentPage < 7) {
-        for (let i = 1; i <= Math.min(12, this.currentPage + 6); i++) {
-            if (!result.includes(i)) result.push(i);
+    //first page so we dont display number 0
+    if(this.currentPage==0)
+      result.push(this.currentPage+6);
+
+    //add all pages up to them and 5 after
+    else if (this.currentPage < 10) {
+      console.log("We re in first pages")
+        for (let i = 1; i <= this.currentPage+6; i++) {
+          if (!result.includes(i)) result.push(i);
         }
     }
     // Handling middle pages
-    else if (this.currentPage >= 10 && this.currentPage <= this.totalPages.length - 14) {
+    else if (this.currentPage >= 10 && this.currentPage <= this.totalPages.length - 13) {
+      console.log("We re in middle")
         for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
             if (!result.includes(i)) result.push(i);
         }
     }
     // Handling last 13 pages
-    else if (this.currentPage >= this.totalPages.length - 14) {
-        for (let i = this.totalPages.length - 12; i <= this.totalPages.length; i++) {
+    else if (this.currentPage >= this.totalPages.length - 12) {
+      console.log("We re in last pages")
+        for (let i = this.currentPage - 4; i <= this.totalPages.length; i++) {
             if (!result.includes(i)) result.push(i);
         }
     }
 
     // Sort the array and return it
     result.sort((a, b) => a - b);
-    console.log(result);
     return result;
 }
 
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
     //new pagination func
-    shouldDisplayPage(index: number): boolean {
-      return this.pageRange[index] !== undefined;
-    }
         
+    //realistic dots
     shouldDisplayDots(index: number): boolean {
-      return this.pageRange[index] !== undefined && this.pageRange[index + 1] !== undefined && this.pageRange[index + 1] - this.pageRange[index] > 1;
+      const gapWithNextPage = this.pageRange[index + 1] - this.pageRange[index];
+      const gapWithPreviousPage = index > 0 ? this.pageRange[index] - this.pageRange[index - 1] : 1;
+      return gapWithNextPage > 1 && gapWithPreviousPage === 1;
     }
     
+    
+    //1 2 3 4 5 6 ... 44 45 46 47 48
+    //1 2 3 4 5 6 7 ... 44 45 46 47 48
+    //1 2 3 4 5 ... 6 7 8 9 10 11 12 13 14 15 16 ... 44 45 46 47 48
+    //1 2 3 4 5 ... 31 32 33 34 35 36 37 38 39 40 41 ... 44 45 46 47 48
+    //1 2 3 4 5 ... 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48
     
     
     
