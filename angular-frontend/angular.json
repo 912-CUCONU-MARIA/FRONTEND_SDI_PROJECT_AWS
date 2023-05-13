@@ -69,7 +69,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "browserTarget": "your-project-name:build"
+            "browserTarget": "angular-frontend:build"
           }
         },
         "extract-i18n": {

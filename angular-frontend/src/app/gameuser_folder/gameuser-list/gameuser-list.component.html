@@ -2,10 +2,12 @@
 
 <div class="paginator">
   <ng-container *ngFor="let page of pageRange; let i = index">
-    <button *ngIf="shouldDisplayPage(i)" [class.active]="page === currentPage + 1" (click)="setPage(page)">{{ page }}</button>
-    <span *ngIf="shouldDisplayDots(i) && shouldDisplayPage(i + 1)">...</span>
+    <button [class.active]="page === currentPage + 1" (click)="setPage(page)">{{ page }}</button>
+    <span *ngIf="shouldDisplayDots(i)">...</span>
   </ng-container>
 </div>
+
+
 
 
 
@@ -46,8 +48,6 @@
         <th> Last Name</th>
         <th> Email Address</th>
         <th> Active Status</th>
-        <!-- <th> Username</th>
-        <th> Password</th> -->
         <th> #PlayerCharacters owned</th>
         <th> Actions </th>
     </thead>
@@ -58,8 +58,6 @@
             <td>{{gameuser.emailAddress}}</td>
             <td>{{gameuser.activeStatus}}</td>
             <td>{{gameuser.numberOfPlayerCharacters}}</td>
-            <!-- <td>{{gameuser.username}}</td>
-            <td>{{gameuser.password}}</td> -->
             <td>
                 <button (click)="updateGameuser(gameuser.id)" class="btn btn-info" > Update</button>
                 <button (click)="confirmDelete(gameuser.id)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>
