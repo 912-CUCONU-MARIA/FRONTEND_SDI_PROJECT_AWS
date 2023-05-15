@@ -8,31 +8,32 @@
 </div>
 
 <!-- Paginator CSS styles -->
-  <style>
-    .paginator {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .paginator button {
-      background-color: #f1f1f1;
-      border: 1px solid #ddd;
-      color: black;
-      cursor: pointer;
-      display: inline-block;
-      margin: 0 4px;
-      padding: 8px 16px;
-      text-decoration: none;
-      transition: background-color .3s;
-    }
-    .paginator button:hover:not(.active) {
-      background-color: #ddd;
-    }
-    .paginator button.active {
-      background-color: #2196F3;
-      color: white;
-    }
-  </style>
+<style>
+  .paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .paginator button {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 2px; /* Reduced margin */
+    padding: 4px 8px; /* Reduced padding */
+    text-decoration: none;
+    transition: background-color .3s;
+    font-size: 0.8rem; /* Reduced font size */
+  }
+  .paginator button:hover:not(.active) {
+    background-color: #ddd;
+  }
+  .paginator button.active {
+    background-color: #2196F3;
+    color: white;
+  }
+</style>
 
 <table class="table table-striped">
     <thead>
