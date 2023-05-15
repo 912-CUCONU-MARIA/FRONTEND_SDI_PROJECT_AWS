@@ -19,12 +19,13 @@ export class GameuserListComponent implements OnInit{
   sortColumn: string | null = null;
   sortDirection: string | null = null;
   
+  // New property for loading state
+  isLoading: boolean = true;
 
   constructor(private gameuserService:GameuserService
     ,private router: Router){}
 
   ngOnInit(): void {
-   this.currentPage=0;
    this.getGameusers();
   }
 
@@ -36,6 +37,7 @@ export class GameuserListComponent implements OnInit{
         this.gameusers = data.content;
         this.totalElements = data.totalElements;
         this.totalPages = Array.from({ length: data.totalPages }, (_, i) => i);
+        this.isLoading = false; // Set the loading state to false
       });
   }
   
@@ -48,7 +50,19 @@ export class GameuserListComponent implements OnInit{
   
 
   get pageRange() {
+
+    if (this.isLoading) return [];
     let result: number[] = [];
+
+    if(this.totalPages.length==0)
+    return [];
+
+    if(this.totalPages.length<10)
+    {
+      for (let i = 1; i <= this.totalPages.length; i++)
+        result.push(i);
+      return result;
+    }
 
     // Always add the first 5 pages and the last 5 pages
     for (let i = 1; i <= 5; i++) {
@@ -64,21 +78,21 @@ export class GameuserListComponent implements OnInit{
 
     //add all pages up to them and 5 after
     else if (this.currentPage < 10) {
-      console.log("We re in first pages")
+      //console.log("We re in first pages")
         for (let i = 1; i <= this.currentPage+6; i++) {
           if (!result.includes(i)) result.push(i);
         }
     }
     // Handling middle pages
     else if (this.currentPage >= 10 && this.currentPage <= this.totalPages.length - 13) {
-      console.log("We re in middle")
+      //console.log("We re in middle")
         for (let i = this.currentPage - 4; i <= this.currentPage + 6; i++) {
             if (!result.includes(i)) result.push(i);
         }
     }
     // Handling last 13 pages
     else if (this.currentPage >= this.totalPages.length - 12) {
-      console.log("We re in last pages")
+      //console.log("We re in last pages")
         for (let i = this.currentPage - 4; i <= this.totalPages.length; i++) {
             if (!result.includes(i)) result.push(i);
         }
@@ -87,16 +101,13 @@ export class GameuserListComponent implements OnInit{
     // Sort the array and return it
     result.sort((a, b) => a - b);
     return result;
-}
-
-    //new pagination func
-        
-    //realistic dots
-    shouldDisplayDots(index: number): boolean {
+  }
+    
+  shouldDisplayDots(index: number): boolean {
       const gapWithNextPage = this.pageRange[index + 1] - this.pageRange[index];
       const gapWithPreviousPage = index > 0 ? this.pageRange[index] - this.pageRange[index - 1] : 1;
       return gapWithNextPage > 1 && gapWithPreviousPage === 1;
-    }
+  }
     
 
   updateGameuser(id: number){
@@ -119,13 +130,14 @@ export class GameuserListComponent implements OnInit{
   gameuserDetails(id:number){
     this.router.navigate(['gameuser-details',id]);
   }
-    mySort(isAsc: boolean) {
+
+  mySort(isAsc: boolean) {
       const direction = isAsc ? 'asc' : 'desc';
       this.currentPage = 0;
       this.sortColumn = 'firstName';
       this.sortDirection = direction;
       this.getGameusers();
-    }
+  }
   
 
 }

@@ -1,13 +1,13 @@
 <h2> Item List</h2>
 
-<!-- Custom Paginator -->
 <div class="paginator">
-    <button *ngFor="let page of pageRange" [class.active]="page === currentPage" (click)="setPage(page)">{{ page + 1 }}</button>
-    <span *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1">...</span>
-    <button *ngIf="pageRange[pageRange.length-1] < totalPages.length - 1" (click)="setPage(pageRange[pageRange.length-1] + 1)">{{ pageRange[pageRange.length-1] + 2 }}</button>
-  </div>
+  <ng-container *ngFor="let page of pageRange; let i = index">
+    <button [class.active]="page === currentPage + 1" (click)="setPage(page)">{{ page }}</button>
+    <span *ngIf="shouldDisplayDots(i)">...</span>
+  </ng-container>
+</div>
 
-  <!-- Paginator CSS styles -->
+<!-- Paginator CSS styles -->
   <style>
     .paginator {
       display: flex;
@@ -32,8 +32,7 @@
       background-color: #2196F3;
       color: white;
     }
-  </style>  
-
+  </style>
 
 <table class="table table-striped">
     <thead>
